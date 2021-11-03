@@ -14,8 +14,19 @@ def bSort(list):
     print("hej")
 
 # Splits lists into sublists, sorts them and then merges them.
+def MergesortBin(list):
+    print("hej")
+
+# Splits lists into sublists, sorts them and then merges them.
 def MergesortLine(list):
     print("hej")
+
+
+# Linear search
+def Insertionsort(list):
+  
+    n = len(list)
+
 
 # Splits lists into sublists, sorts them and then merges them.
 def MergesortBin(list):
