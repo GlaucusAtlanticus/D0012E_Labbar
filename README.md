@@ -11,6 +11,7 @@ This repos purpose if to help and collect our effort in solving the different la
 - Demonstrate the ability to make judgments with regard to the possibilities of technologies , and demonstrate proficiency in present and discuss their conclusions and the knowledge and arguments that form the basis for these
 
 ## Labs
+The course has 3 lab assigments that requires analysis, creation, motivation and implementation of algorithms. The assigments are listed below:
 - Lab1 InsertionSort
 - Lab2 Unknown 
 - Lab3 Unknown
