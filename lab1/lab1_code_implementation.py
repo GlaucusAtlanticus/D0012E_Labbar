@@ -27,15 +27,21 @@ def Insertionsort(list):
   
     n = len(list)
 
+    for j in range(0, n):
+        
+        while j > 0 and list[j-1] > list[j]:
+
+            temp = list[j]
+            list[j] = list[j-1]
+            list[j-1] = temp
+
+            j = j-1
 
 # Splits lists into sublists, sorts them and then merges them.
 def MergesortBin(list):
     # tolkade labspecen som att en mergsort ska hantera linjärt och en som hanterar bin
     print("hej")
 
-# Linear search
-def Insertionsort(list):    
-    n = len(list)
 
 # Linear Plain text
 # Vårat input är en (osorterad) lista av N element 
@@ -49,8 +55,9 @@ def Insertionsort(list):
 
 # Starts Sorting algorithms and prints sorted list
 def Main():
-    print("hej")
-
+    #print("hej")
+    Insertionsort(Numbers)
+    print(Numbers)
 
 ### Start Main ###
 Main()
