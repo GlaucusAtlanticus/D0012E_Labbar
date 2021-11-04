@@ -1,8 +1,8 @@
 import math
 import random
+# https://stackoverflow.com/questions/57409385/how-do-i-see-the-time-it-took-to-run-my-program-in-visual-studio-code
 
-
-### Lists ###
+### Lists ###################################################################################
 
 Numbers = [5, 7, 10, 1, 4, 15, 3]
 
@@ -13,7 +13,7 @@ for x in range(1, 10000):             # Size of list
     y = random.randint(1,10000)      # range of numbers
     RandomNumbers.append(y)             # Adds numbers to list
 
-#### Functions ###
+#### Functions ################################################################################
 
 # Binary sort
 def bSort(list):
@@ -66,6 +66,6 @@ def Main():
     print(RandomNumbers)
 
 
-### Start Main ###
+### Start Main ####################################################################
 Main()
 
