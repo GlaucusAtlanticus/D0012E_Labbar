@@ -34,7 +34,7 @@ def MergesortBin(list):
     print("hej")
 
 # Linear search
-def Insertionsort(list):    
+def Insertionsort(list):
     n = len(list)
 
 # Linear Plain text
@@ -44,12 +44,18 @@ def Insertionsort(list):
 # Hur funktionen funkar
 # Funktionen funkar genom att man tar element (i)
 # Jämför det elementet (j) som är den del av listan
-#   ifall i < j 
+#   ifall i > j 
+#       swapp
+#       iterate i 
+#   else 
+#       j++
 ##### More to come ######
 
 # Starts Sorting algorithms and prints sorted list
 def Main():
+    print(Numbers)
     print("hej")
+    print(Insertionsort(Numbers))
 
 
 ### Start Main ###
