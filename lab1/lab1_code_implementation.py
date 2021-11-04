@@ -75,7 +75,30 @@ def bSort(list):
             
 # Splits lists into sublists, sorts them and then merges them.
 def MergesortBin(list, k):
-    print("hej")
+    #list1 = list[0:(round((len(list))/2))]
+    #list2 = list[(round((len(list))/2)):(len(list))]
+    if k > 0:
+        MergesortBin(list[0:(round((len(list))/2))], k-1)
+        MergesortBin(list[(round((len(list))/2)):(len(list))], k-1)
+    else:
+        list1 = bSort(list[0:(round((len(list))/2))])
+        list2 = bSort(list[(round((len(list))/2)):(len(list))])
+
+        list3 = []
+        while (len(list1) > 0) and (len(list2) > 0):
+            if list1[0] < list2[0]:
+                list3.append(list1[0])
+                list1[0].pop
+            else:
+                list3.append(list2[0])
+                list2[0].pop
+
+        #append what is left to list3
+        if len(list1) > len(list2):
+            list3.extend(list1)
+        else:
+            list3.extend(list2)
+        return list3
 
 # Splits lists into sublists, sorts them and then merges them.
 def MergesortLine(list, k):
@@ -121,11 +144,11 @@ def Main():
     k = 2
 
     # MergesortBin(RandomNumbers, k)
-    # MergesortLine(RandomNumbers, k)
+    list =  MergesortLine(RandomNumbers, k)
     # bSort(RandomNumbers)
     # Insertionsort(RandomNumbers)
 
-    print(RandomNumbers)
+    print(list)
 
 ### Start Main ####################################################################
 Main()
