@@ -1,11 +1,17 @@
 import math
-
+import random
 
 
 ### Lists ###
 
 Numbers = [5, 7, 10, 1, 4, 15, 3]
 
+# Creates a large list with random numbers
+RandomNumbers = []
+
+for x in range(1, 10000):             # Size of list
+    y = random.randint(1,10000)      # range of numbers
+    RandomNumbers.append(y)             # Adds numbers to list
 
 #### Functions ###
 
@@ -31,7 +37,7 @@ def Insertionsort(list):
         
         while j > 0 and list[j-1] > list[j]:
 
-            temp = list[j]
+            temp = list[j]                # This segment swaps j-1 and j
             list[j] = list[j-1]
             list[j-1] = temp
 
@@ -55,9 +61,10 @@ def MergesortBin(list):
 
 # Starts Sorting algorithms and prints sorted list
 def Main():
-    #print("hej")
-    Insertionsort(Numbers)
-    print(Numbers)
+    # print("hej")
+    # Insertionsort(RandomNumbers)
+    print(RandomNumbers)
+
 
 ### Start Main ###
 Main()
