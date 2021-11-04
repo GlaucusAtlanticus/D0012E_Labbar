@@ -1,5 +1,6 @@
 import math
 import random
+
 # https://stackoverflow.com/questions/57409385/how-do-i-see-the-time-it-took-to-run-my-program-in-visual-studio-code
 
 ### Lists ###################################################################################
@@ -20,11 +21,11 @@ def bSort(list):
     print("hej")
 
 # Splits lists into sublists, sorts them and then merges them.
-def MergesortBin(list):
+def MergesortBin(list, k):
     print("hej")
 
 # Splits lists into sublists, sorts them and then merges them.
-def MergesortLine(list):
+def MergesortLine(list, k):
     print("hej")
 
 
@@ -44,7 +45,7 @@ def Insertionsort(list):
             j = j-1
 
 # Splits lists into sublists, sorts them and then merges them.
-def MergesortBin(list):
+def MergesortBin(list, k):
     # tolkade labspecen som att en mergsort ska hantera linjärt och en som hanterar bin
     print("hej")
 
@@ -61,8 +62,14 @@ def MergesortBin(list):
 
 # Starts Sorting algorithms and prints sorted list
 def Main():
-    # print("hej")
+
+    k = 2
+
+    # MergesortBin(RandomNumbers, k)
+    # MergesortLine(RandomNumbers, k)
+    # bSort(RandomNumbers)
     # Insertionsort(RandomNumbers)
+
     print(RandomNumbers)
 
 
