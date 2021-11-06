@@ -9,7 +9,7 @@ def Insertionsort(list):
     n = len(list)
 
     for j in range(0, n):
-        
+        print(j)
         while j > 0 and list[j-1] > list[j]:
 
             temp = list[j]                # This segment swaps j-1 and j
