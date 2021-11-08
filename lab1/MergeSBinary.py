@@ -4,39 +4,35 @@
 
 from BinarySearch import bSort
 
+# A merge sorter that takes help of a binary insertion sort
 def MergesortBin(list, k):
 
-    i = 0
-    splitList = []
-    while (i*k) < len(list):
-        if i == 0:
-            splitList.append(specialSplit(list, k))
-        else:
-            splitList.append(list[(i*k) : ((i+1)*k)])
-        i += 1
+    i = 0                           # a help int
+    splitList = []                  # empty list that stores the splitted input
+    while (i*k) < len(list):        # runs ass long as i*k is not outside the list
+        splitList.append(list[(i*k) : ((i+1)*k)])   # adds a segment of input list to split list
+        i += 1                      # increment i 
     
-    splitListS = []
+
+    splitListS = []                 # a empty list to store all sorted split list
     for X in splitList:
-        splitListS.append(bSort(X))
+        splitListS.append(bSort(X)) # sorts all split list and adds them to splitListS
 
-    sortedList = specialSort(splitListS[0], splitListS[1])
-    splitListS.pop(0)
-    splitListS.pop(0)
 
+    sortedList = Sort(splitListS[0], splitListS[1])     # special case to handel the first 2 list in splitListS
+    splitListS.pop(0)       # removes the list used in the special case
+    splitListS.pop(0)       # removes the list used in the special case
+
+    # sorts the list in splitListS and adds them to sortedList
     while len(splitListS) > 0:
-        sortedList = specialSort(sortedList, splitListS[0])
+        sortedList = Sort(sortedList, splitListS[0])
         splitListS.pop(0)
 
-    print(sortedList)
+    # returns a sorted list
     return sortedList
 
-
-def specialSplit(list, k):
-    tempList = list[:k]
-    return tempList
-
-
-def specialSort(list1, list2):
+# a sorting function
+def Sort(list1, list2):
     templist = []
 
     while (len(list1) > 0) and (len(list2) > 0): # While still elements in both lists.

@@ -45,8 +45,8 @@ def Main():
     start_time = time.time()
     
     ### the diffrent functions ###
-    #list = MergesortLin(RandomNumbers, k)
-    list = MergesortBin(RandomNumbers, k)
+    list = MergesortLin(RandomNumbers, k)
+    #list = MergesortBin(RandomNumbers, k)
     #list = Insertionsort(RandomNumbers)
     #list = bSort(RandomNumbers)
 
