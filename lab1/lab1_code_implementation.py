@@ -39,16 +39,16 @@ def validate(lst):
 # Starts Sorting algorithms and prints sorted list
 def Main():
 
-    k = 2
+    k = 15
 
     # start timer
     start_time = time.time()
     
     ### the diffrent funktions ###
     #list = MergesortLin(RandomNumbers, k)
-    #list = MergesortBin(RandomNumbers, k)
+    list = MergesortBin(RandomNumbers, k)
     #list = bSort(RandomNumbers)
-    list = Insertionsort(RandomNumbers)
+    #list = Insertionsort(RandomNumbers)
 
     # prints time to run sorthing method
     print("Process finished --- %s seconds ---" % (time.time() - start_time))

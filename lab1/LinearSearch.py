@@ -17,6 +17,7 @@ def Insertionsort(list):
             list[j-1] = temp
 
             j = j-1
+    return list
 
 # Linear Plain text
 # Vårat input är en (osorterad) lista av N element 
