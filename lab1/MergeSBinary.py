@@ -20,7 +20,7 @@ def MergesortBin(list, k):
         #split the list in two and input to itself. Decreses k by 1.
         list1 = MergesortBin(list[:halfList], k-1)  #start to middle, 
         list2 = MergesortBin(list[halfList:], k-1)  # middle to end
-    
+    print("mamma")
     while (len(list1) > 0) and (len(list2) > 0): # While still elements in both lists.
             
         # if the first element in list 1 is lesser than the first element in list 2,

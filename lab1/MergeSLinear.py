@@ -6,7 +6,7 @@ from LinearSearch import Insertionsort
 
 
 # Splits lists into sublists, sorts them and then merges them.
-def MergesortBin(list, k):
+def MergesortLin(list, k):
     list1 = []  # first half of the list
     list2 = []  # second half of the list.
     outputList = []  # output list.
@@ -19,8 +19,8 @@ def MergesortBin(list, k):
         list2 = Insertionsort(list[halfList:])
     else:
         #split the list in two and input to itself. Decreses k by 1.
-        list1 = MergesortBin(list[:halfList], k-1)  #start to middle, 
-        list2 = MergesortBin(list[halfList:], k-1)  # middle to end
+        list1 = MergesortLin(list[:halfList], k-1)  #start to middle, 
+        list2 = MergesortLin(list[halfList:], k-1)  # middle to end
     
     while (len(list1) > 0) and (len(list2) > 0): # While still elements in both lists.
             
