@@ -13,11 +13,11 @@ def MergesortBin(list, k):
     halfList = round(len(list)/2)
 
     if k == 0:
-        # when k = 0, split the list in two and input to bsort.
+        # when k = 0, split the list in two and input to bSort.
         list1 = bSort(list[:halfList])
         list2 = bSort(list[halfList:])
     else:
-        #split the list in two and input to itself. Decreses k by 1.
+        #split the list in two and input to itself. Decreases k by 1.
         list1 = MergesortBin(list[:halfList], k-1)  #start to middle, 
         list2 = MergesortBin(list[halfList:], k-1)  # middle to end
     print("mamma")
@@ -34,7 +34,7 @@ def MergesortBin(list, k):
             outputList.append(list2[0])
             list2.pop(0)
 
-    # if there is items left in one list append the list to the ouptput list.
+    # if there is items left in one list append the list to the output list.
     if len(list1) > len(list2):
         outputList.extend(list1)
     else:

@@ -2,11 +2,11 @@
 # Jonatan Trefill
 # Rasmus Jacobsen
 
-# Import needed funktions
+# Import needed functions
 import random
 import time
 
-# Imports the diffrent funktions
+# Imports the diffrent functions
 from LinearSearch import Insertionsort
 from BinarySearch import bSort
 from MergeSBinary import MergesortBin
@@ -44,11 +44,11 @@ def Main():
     # start timer
     start_time = time.time()
     
-    ### the diffrent funktions ###
+    ### the diffrent functions ###
     #list = MergesortLin(RandomNumbers, k)
-    list = MergesortBin(RandomNumbers, k)
-    #list = bSort(RandomNumbers)
+    #list = MergesortBin(RandomNumbers, k)
     #list = Insertionsort(RandomNumbers)
+    list = bSort(RandomNumbers)
 
     # prints time to run sorthing method
     print("Process finished --- %s seconds ---" % (time.time() - start_time))

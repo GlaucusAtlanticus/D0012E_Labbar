@@ -18,7 +18,7 @@ def MergesortLin(list, k):
         list1 = Insertionsort(list[:halfList])
         list2 = Insertionsort(list[halfList:])
     else:
-        #split the list in two and input to itself. Decreses k by 1.
+        #split the list in two and input to itself. Decreases k by 1.
         list1 = MergesortLin(list[:halfList], k-1)  #start to middle, 
         list2 = MergesortLin(list[halfList:], k-1)  # middle to end
     
@@ -35,7 +35,7 @@ def MergesortLin(list, k):
             outputList.append(list2[0])
             list2.pop(0)
 
-    # if there is items left in one list append the list to the ouptput list.
+    # if there is items left in one list append the list to the output list.
     if len(list1) > len(list2):
         outputList.extend(list1)
     else:
