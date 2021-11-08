@@ -3,7 +3,6 @@
 # Rasmus Jacobsen
 
 # Import needed funktions
-import math     # not needed?
 import random
 import time
 
@@ -13,7 +12,6 @@ from BinarySearch import bSort
 from MergeSBinary import MergesortBin
 from MergeSLinear import MergesortLin
 
-# https://stackoverflow.com/questions/57409385/how-do-i-see-the-time-it-took-to-run-my-program-in-visual-studio-code
 
 ### Lists ###################################################################################
 
@@ -23,7 +21,7 @@ Numbers = [5, 7, 7, 10, 1, 4, 15, 3]
 RandomNumbers = []
 print("creating rand num")
 for x in range(1, 1000000):             # Size of list
-    y = random.randint(1,10000)      # range of numbers
+    y = random.randint(1,10000)         # range of numbers
     RandomNumbers.append(y)             # Adds numbers to list
 print("don creating rand num")
 
@@ -32,12 +30,11 @@ print("don creating rand num")
 def validate(lst):
 
     while len(lst) > 1:
-        if lst[0] > lst[1]:
-            return False
+        if lst[0] > lst[1]:     # if the first number is larger then the next
+            return False        # return false
         lst.pop(0)
 
     return True
-
 
 # Starts Sorting algorithms and prints sorted list
 def Main():
@@ -61,4 +58,3 @@ def Main():
 
 ### Start Main ####################################################################
 Main()
-
