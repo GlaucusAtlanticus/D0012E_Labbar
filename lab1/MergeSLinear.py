@@ -7,18 +7,26 @@ from LinearSearch import Insertionsort
 
 # A merge sorter that takes help of a linear insertion sort
 def MergesortLin(list, k):
-
+    if k > len(list):
+        print("wrong k value")
+        return
+        
     i = 0                           # a help int
     splitList = []                  # empty list that stores the splitted input
-    while (i*k) < len(list):        # runs ass long as i*k is not outside the list
-        splitList.append(list[(i*k) : ((i+1)*k)])   # adds a segment of input list to split list
-        i += 1                      # increment i 
     
+    if k != 0:
+        while (i*k) < len(list):        # runs ass long as i*k is not outside the list
+            splitList.append(list[(i*k) : ((i+1)*k)])   # adds a segment of input list to split list
+            i += 1                      # increment i 
+    else:
+        splitList = list
 
     splitListS = []                 # a empty list to store all sorted split list
     for X in splitList:
         splitListS.append(Insertionsort(X))             # sorts all split list and adds them to splitListS
 
+    if k == 0:
+        return splitListS
 
     sortedList = Sort(splitListS[0], splitListS[1])     # special case to handel the first 2 list in splitListS
     splitListS.pop(0)       # removes the list used in the special case
