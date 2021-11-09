@@ -60,10 +60,10 @@ def Main():
 
 
             validated =  validate(sortList)
-            print("k: %s; N: %s; Validated: %s; time = %d h, %d m, %d s;\n" %(k, N, validated, hours, minutes, seconds))
+            print("k: %s; N: %s; Validated: %s; time = %d h, %d m, %s s;\n" %(k, N, validated, hours, minutes, seconds))
             print(len(sortList))
             f = open("Results.txt", "a")
-            f.write("k: %s; input lenght : 2^%s; Validated: %s; time = %d h, %d m, %d s;\n" %(k, N, validated, hours, minutes, seconds))
+            f.write("k: %s; input lenght : 2^%s; Validated: %s; time = %d h, %d m, %s s;\n" %(k, N, validated, hours, minutes, seconds))
             f.close
             N = N + 1
         k = k -1
@@ -93,10 +93,10 @@ def Main():
 
 
             validated =  validate(sortList)
-            print("k: %s; N: %s; Validated: %s; time = %d h, %d m, %d s;\n" %(k, N, validated, hours, minutes, seconds))
+            print("k: %s; N: %s; Validated: %s; time = %d h, %d m, %s s;\n" %(k, N, validated, hours, minutes, seconds))
             print(len(sortList))
             f = open("Results.txt", "a")
-            f.write("k: %s; input lenght : 2^%s; Validated: %s; time = %d h, %d m, %d s;\n" %(k, N, validated, hours, minutes, seconds))
+            f.write("k: %s; input lenght : 2^%s; Validated: %s; time = %d h, %d m, %s s;\n" %(k, N, validated, hours, minutes, seconds))
             f.close
             N = N + 1
         k = k -1
