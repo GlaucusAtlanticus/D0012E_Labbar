@@ -1,5 +1,5 @@
 # Edvin Petterson
-# Jonatan Trefill
+# Jonatan Trefil
 # Rasmus Jacobsen
 
 # Import needed functions
@@ -58,3 +58,6 @@ def Main():
 
 ### Start Main ####################################################################
 Main()
+
+
+for k in range (0, 20)
