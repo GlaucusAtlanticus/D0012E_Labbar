@@ -44,24 +44,37 @@ def Main():
     f.write("\n BSORT:\n")
     f.close
     k = 20  # k value
+
+    # Sort the list for all valid values of k 0 to 20 and N(^2) from 1 to 20
+    # k: number of sublists
+    # N: size of list as a power of two
+
     while k >= 0:
         N = 1 # power of two size of random list
         while N <= 20:
             unSortList = randomNR(pow(2, N))
+
+            #check that inputs are legal
             if k >= len(unSortList):
                 N = N + 1
                 continue
 
-            start_time = time.time()
-            sortList = MergesortBin(unSortList, k)
-            runTime = time.time() - start_time
-            minutes, seconds = divmod(runTime, 60)
-            hours, minutes = divmod(minutes, 60)
+            start_time = time.time()                    # Time at start of test
+            sortList = MergesortBin(unSortList, k)      # sort list using Mergesort binary
+            runTime = time.time() - start_time          # time taken to sort the list
+
+            minutes, seconds = divmod(runTime, 60)      # Get time taken in hours, minutes and seconds
+            hours, minutes = divmod(minutes, 60)        #
 
 
-            validated =  validate(sortList)
+            validated =  validate(sortList)             # Verify that the list got correctly sorted
+
+            # print results to terminal
             print("k: %s; N: %s; Validated: %s; time = %d h, %d m, %s s;\n" %(k, N, validated, hours, minutes, seconds))
-            print(len(sortList))
+            
+            #print(sortList)
+
+            # write results to file
             f = open("Results.txt", "a")
             f.write("k: %s; input lenght : 2^%s; Validated: %s; time = %d h, %d m, %s s;\n" %(k, N, validated, hours, minutes, seconds))
             f.close
@@ -72,29 +85,35 @@ def Main():
     f.write("\n LSORT:\n")
     f.close
 
-    print("NEXT")
+    print("testing mergesort linear ")
     k = 20  # k value
     while k >= 0:
         N = 1 # power of two size of random list
         while N <= 20:
             unSortList = randomNR(pow(2, N))
+
+            # check that inputs are legal
             if k >= len(unSortList):
                 print("bad batch")
                 N = N + 1
                 continue
 
-            start_time = time.time()
+            start_time = time.time()                    # Time at start of test
+            sortList = MergesortLin(unSortList, k)      # sort list using Mergesort linear
+            runTime = time.time() - start_time          # time taken to sort the list
 
-            sortList = MergesortLin(unSortList, k)
-            
-            runTime = time.time() - start_time
-            minutes, seconds = divmod(runTime, 60)
-            hours, minutes = divmod(minutes, 60)
+            minutes, seconds = divmod(runTime, 60)      # Get time taken in hours, minutes and seconds
+            hours, minutes = divmod(minutes, 60)        #
 
 
-            validated =  validate(sortList)
+            validated =  validate(sortList)             # Verify that the list got correctly sorted
+
+            # print results to terminal
             print("k: %s; N: %s; Validated: %s; time = %d h, %d m, %s s;\n" %(k, N, validated, hours, minutes, seconds))
-            print(len(sortList))
+
+            #print(sortList)
+
+            # write results to file
             f = open("Results.txt", "a")
             f.write("k: %s; input lenght : 2^%s; Validated: %s; time = %d h, %d m, %s s;\n" %(k, N, validated, hours, minutes, seconds))
             f.close
