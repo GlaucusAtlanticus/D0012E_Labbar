@@ -105,21 +105,23 @@ def TestBSort(lst):
 # recursive binary sorter
 def binarySorter(lst, X):
     
-    if len(lst) == 1:
+    if len(lst) == 1:               # if the lst is one return it whit X attached
         return [lst[0], X]
 
-    sList   = [] 
-    tmpList = []    
-    middlePoint = round(len(lst)/2)
+    sList   = []                    # the sorted lst
+    tmpList = []                    # a help list
+    middlePoint = round(len(lst)/2) # the middel of the list
 
-    if X < lst[middlePoint]:
+    if X < lst[middlePoint]:        # if X is smaller then the middle of the lst 
+                                    # do a recursive call whit the first part of the list
+                                    # then add the new list whit the old one
         tmpList = binarySorter(lst[:middlePoint], X)
         sList = tmpList + lst[middlePoint:]
-    elif X > lst[middlePoint]:
+    elif X > lst[middlePoint]:      # same as above but whit the secund part of the list
         tmpList = binarySorter(lst[middlePoint:], X)
         sList = lst[:middlePoint] + tmpList
-    else:
-        lst.insert(middlePoint, X)
+    else:                           # if the element is the same insert it att the middlePoint
+        lst.insert(middlePoint, X)  # and return
         return lst
 
-    return sList
+    return sList                    # return a sorted list
