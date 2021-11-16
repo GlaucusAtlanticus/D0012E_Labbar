@@ -3,7 +3,7 @@
 # Rasmus Jacobsen
 
 from BinarySearch import bSort
-from lab1.BinarySearch import middle
+from BinarySearch import middle
 
 # A merge sorter that takes help of a binary insertion sort
 def MergesortBin(list, k):
@@ -69,69 +69,76 @@ def Sort(list1, list2):
 
 # A merge sorter that takes help of a binary insertion sort
 def RMergesortBin(list, k):
-    if k > len(list):
+    if k > len(list):                   # if K are larger then input print error msg and return
         print("wrong k value")
         return
 
-    splitList = []                  # empty list that stores the splitted input
+    splitList = []                      # empty list that stores the splitted input
 
-    if k == 0:
+    if k == 0:                          # if K is 0 do a normal bSort   
         return bSort(list)
-    else:
+    else:                               # else split it in K size chunks
         splitList = splitter(list, k)
     
-    halfSort = sortElement(splitList)
+    halfSort = sortElement(splitList)   # sorts the splitted list
     
-    sortedList = merger(halfSort)
+    sortedList = merger(halfSort)       # merges the sorted list
     while True:
-        if len(sortedList) == 1:
-            break
+        if len(sortedList) == 1:        # if the length of sortedList is 1 
+            break                       # means that it have bin sorted
 
         sortedList = merger(halfSort)
+    
+    return sortedList                   # returns a sorted list
 
+# takes a list of list and merges them two and two 
 def merger(lst):
-    tempList = []
+    tempList = []                       # temp help list
 
-    while len(lst) > 0:
-        tempList = tempList + Sort(lst[0], lst[1])
-        lst.pop[0]
-        lst.pop[0]
-
-        if len(lst) == 1:
-            tempList = Sort(tempList, lst)
+    while len(lst) > 0:                 # runs as long as input list is larger then 0
+        if len(lst) == 1:               # if input list is one do special case
+            tempList = tempList[:-1] + Sort(tempList[-1], lst)      # sorts it whit the last element in tempList
             break
+
+        tempList = tempList + Sort(lst[0], lst[1])                  # sorts the two first list and adds them 
+        lst.pop[0]                                                  # to the already sorted ones
+        lst.pop[0]                                                  # and removes the ones that have bean used
     
     return tempList
 
+# takes a list of list and calls a sorting func. fore each of the list 
+# returns a list of sorted lists
 def sortElement(lst):
     tempList = []
-    for X in lst:
-        tempList.append(bSort(X)) # sorts all split list and adds them to splitListS
-    return tempList
+    for X in lst:                       # Gets each list in input list
+        tempList.append(bSort(X))       # Sorts the list
+    return tempList                     # and returns them
 
+# tacks a list and a int, splits the list in K size chunks 
+# returns a list of list
 def splitter(list, k):
-    i = 0
-    tempList = []
-    while (i*k) < len(list):        # runs as long as i*k is not outside the list
-        tempList.append(list[(i*k) : ((i+1)*k)])   # adds a segment of input list to split list
+    i = 0                               
+    tempList = []                       # a temp list
+    while (i*k) < len(list):            # runs as long as i*k is not outside the list
+        tempList.append(list[(i*k) : ((i+1)*k)])                    # adds a segment of input list to tempList
         i += 1   
     
-    return tempList
+    return tempList                     # returns a list of lists
 
 
-# a sorting function
+# takes two lists sorts them and 
+# return on list
 def Sort(list1, list2):
     templist = []
 
-    while (len(list1) > 0) and (len(list2) > 0): # While still elements in both lists.
+    while (len(list1) > 0) and (len(list2) > 0):                    # While still elements in both lists.
             
         # if the first element in list 1 is lesser than the first element in list 2,
         # append the first element in list 1 to output list and delete it from list1.
         if list1[0] < list2[0]:
             templist.append(list1[0])
             list1.pop(0)
-
-            # As above but for list2.
+        # As above but for list2.
         else:
             templist.append(list2[0])
             list2.pop(0)
@@ -154,15 +161,18 @@ def Sort(list1, list2):
 ##############################################################################################
 
 def TestMergesortbin(lst, k):
-    middlePoint = round(len(lst)/2)
+    middlePoint = round(len(lst)/2)     # findes ware the middle of the list is
 
-    if len(lst) < k:
+    if len(lst) < k:                    # if input list is smaller than K run normal sort 
         return bSort(lst)
-    else:
+    else:                               # else do  recursive call whit the first half of the list
+                                        # then whit the secund half of the list
         list1 = TestMergesortbin(lst[:middlePoint], k)
         list2 = TestMergesortbin(lst[middlePoint:], k)
 
     sortList = []
+
+    # sorts the two lists
     while (len(list1) > 0) and (len(list2) > 0):
         if list1[0] < list2[0]:
             sortList.append(list1[0])
@@ -177,7 +187,7 @@ def TestMergesortbin(lst, k):
     else:
         sortList.extend(list1)
 
-    return sortList
+    return sortList                     # returns a sorted list
     
 
 
