@@ -73,7 +73,7 @@ def Sort(list1, list2):
 ##############################################################################################
 #                           Old Code                                                         #
 ##############################################################################################
-
+#####           Sät basfallet till K så ifall len(lst) <= K run bSort
 
 # Splits lists into sublists, sorts them and then merges them.
 def FuckMergesortBin(list, k):

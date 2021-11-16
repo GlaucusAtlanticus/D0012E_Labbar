@@ -59,3 +59,67 @@ def bSort(list):
                 rPoint = mPoint
                 mPoint -= middle(lPoint, rPoint)
     return sList            # returns the sorted list
+
+
+
+
+
+
+
+##############################################################################################
+#                           Test Code                                                        #
+##############################################################################################
+
+def TestBSort(lst):
+
+    if len(lst) <= 1:               # if input list is 1 or smaller return list
+        return lst
+
+    sList = []                      # sorted list
+    if(lst[0] > lst[1]):            # if the secend element is larger then the first 
+        sList.append(lst[1])        # swaps place and puts them in sorted list
+        sList.append(lst[0])       
+    else:                           # else
+        sList.append(lst[0])        # adds them in the order they come
+        sList.append(lst[1])
+
+    if len(lst) == 2:               # if input list is 2 then its sorted
+        return sList                # return list
+
+    i = 0
+    for X in lst[2:]:               # goes through all remaining elements 
+        print("i am still runing", i)
+        i += 1
+        if X >= sList[-1]:          # if element X is larger then sorted list[end] 
+            sList.append(X)         # adds it to the end
+            continue                # and goes to the next element
+
+        if X <= sList[0]:           # if element X is smaller then sorted list[head] 
+            sList = [X] + sList     # adds it to the begining 
+            continue                # and goes to the next element
+       
+        sList = binarySorter(sList, X)  # calls a recursive function
+        
+    return sList
+
+# recursive binary sorter
+def binarySorter(lst, X):
+    
+    if len(lst) == 1:
+        return [lst[0], X]
+
+    sList   = [] 
+    tmpList = []    
+    middlePoint = round(len(lst)/2)
+
+    if X < lst[middlePoint]:
+        tmpList = binarySorter(lst[:middlePoint], X)
+        sList = tmpList + lst[middlePoint:]
+    elif X > lst[middlePoint]:
+        tmpList = binarySorter(lst[middlePoint:], X)
+        sList = lst[:middlePoint] + tmpList
+    else:
+        lst.insert(middlePoint, X)
+        return lst
+
+    return sList
