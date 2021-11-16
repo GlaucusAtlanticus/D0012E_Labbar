@@ -8,7 +8,7 @@ import time
 
 # Imports the diffrent functions
 from LinearSearch import Insertionsort
-from BinarySearch import bSort
+from BinarySearch import bSort, TestBSort
 from MergeSBinary import MergesortBin
 from MergeSLinear import MergesortLin
 
@@ -20,7 +20,7 @@ Numbers = [5, 7, 7, 10, 1, 4, 15, 3]
 # Creates a large list with random numbers
 RandomNumbers = []
 print("creating rand num")
-for x in range(1, 100):             # Size of list
+for x in range(1, 1000000):             # Size of list
     y = random.randint(1,10000)         # range of numbers
     RandomNumbers.append(y)             # Adds numbers to list
 print("don creating rand num")
@@ -45,10 +45,10 @@ def Main():
     start_time = time.time()
     
     ### the diffrent functions ###
-    list = MergesortLin(RandomNumbers, k)
+    #list = MergesortLin(RandomNumbers, k)
     #list = MergesortBin(RandomNumbers, k)
     #list = Insertionsort(RandomNumbers)
-    #list = bSort(RandomNumbers)
+    list = TestBSort(RandomNumbers)
 
     # prints time to run sorthing method
     print("Process finished --- %s seconds ---" % (time.time() - start_time))
@@ -60,4 +60,4 @@ def Main():
 Main()
 
 
-for k in range (0, 20)
+#for k in range (0, 20)

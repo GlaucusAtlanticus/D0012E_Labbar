@@ -2,11 +2,11 @@
 # Jonatan Trefill
 # Rasmus Jacobsen
 
-# Import needed funktions
+# Import needed functions
 import random
 import time
 
-# Imports the diffrent funktions
+# Imports the diffrent functions
 from LinearSearch import Insertionsort
 from BinarySearch import bSort
 from MergeSBinary import MergesortBin
@@ -76,7 +76,7 @@ def Main():
 
             # write results to file
             f = open("Results.txt", "a")
-            f.write("k: %s; input lenght : 2^%s; Validated: %s; time = %d h, %d m, %s s;\n" %(k, N, validated, hours, minutes, seconds))
+            f.write("k: %s; input length : 2^%s; Validated: %s; time = %d h, %d m, %s s;\n" %(k, N, validated, hours, minutes, seconds))
             f.close
             N = N + 1
         k = k -1
