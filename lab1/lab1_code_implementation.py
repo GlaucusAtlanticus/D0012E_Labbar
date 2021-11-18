@@ -10,7 +10,8 @@ import time
 from LinearSearch import Insertionsort
 from BinarySearch import bSort, TestBSort
 from MergeSBinary import MergesortBin
-from MergeSLinear import MergesortLin
+from MergeSLinear import MergesortLin 
+
 
 
 ### Lists ###################################################################################
@@ -20,7 +21,7 @@ Numbers = [5, 7, 7, 10, 1, 4, 15, 3]
 # Creates a large list with random numbers
 RandomNumbers = []
 print("creating rand num")
-for x in range(1, 1000000):             # Size of list
+for x in range(1, 10000):             # Size of list
     y = random.randint(1,10000)         # range of numbers
     RandomNumbers.append(y)             # Adds numbers to list
 print("don creating rand num")
