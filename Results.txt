@@ -1,0 +1,33 @@
+
+ Pure Mergesort:
+input length : 2^14; Validated: True; time = 0 h, 0 m, 0.3340888023376465 s;
+
+ Merge BinarySort Recursive:
+k: 2^1; input length: 2^14; Validated: True; time = 0 h, 0 m, 0.2830207347869873 s;
+k: 2^2; input length: 2^14; Validated: True; time = 0 h, 0 m, 0.2540421485900879 s;
+k: 2^3; input length: 2^14; Validated: True; time = 0 h, 0 m, 0.233992338180542 s;
+k: 2^4; input length: 2^14; Validated: True; time = 0 h, 0 m, 0.24501848220825195 s;
+k: 2^5; input length: 2^14; Validated: True; time = 0 h, 0 m, 0.2910280227661133 s;
+k: 2^6; input length: 2^14; Validated: True; time = 0 h, 0 m, 0.2990403175354004 s;
+k: 2^7; input length: 2^14; Validated: True; time = 0 h, 0 m, 0.2765076160430908 s;
+k: 2^8; input length: 2^14; Validated: True; time = 0 h, 0 m, 0.3420288562774658 s;
+k: 2^9; input length: 2^14; Validated: True; time = 0 h, 0 m, 0.370037317276001 s;
+k: 2^10; input length: 2^14; Validated: True; time = 0 h, 0 m, 0.2940356731414795 s;
+k: 2^11; input length: 2^14; Validated: True; time = 0 h, 0 m, 0.3090212345123291 s;
+k: 2^12; input length: 2^14; Validated: True; time = 0 h, 0 m, 0.35602474212646484 s;
+k: 2^13; input length: 2^14; Validated: True; time = 0 h, 0 m, 0.305039644241333 s;
+
+ Merge LinearSort:
+k: 2^1; input lenght: 2^14; Validated: True; time = 0 h, 2 m, 20.516435146331787 s;
+k: 2^2; input lenght: 2^14; Validated: True; time = 0 h, 1 m, 17.464579105377197 s;
+k: 2^3; input lenght: 2^14; Validated: True; time = 0 h, 0 m, 41.60005021095276 s;
+k: 2^4; input lenght: 2^14; Validated: True; time = 0 h, 0 m, 23.212403297424316 s;
+k: 2^5; input lenght: 2^14; Validated: True; time = 0 h, 0 m, 11.966180086135864 s;
+k: 2^6; input lenght: 2^14; Validated: True; time = 0 h, 0 m, 5.675168514251709 s;
+k: 2^7; input lenght: 2^14; Validated: True; time = 0 h, 0 m, 2.918752908706665 s;
+k: 2^8; input lenght: 2^14; Validated: True; time = 0 h, 0 m, 1.8964157104492188 s;
+k: 2^9; input lenght: 2^14; Validated: True; time = 0 h, 0 m, 1.6721174716949463 s;
+k: 2^10; input lenght: 2^14; Validated: True; time = 0 h, 0 m, 2.5152134895324707 s;
+k: 2^11; input lenght: 2^14; Validated: True; time = 0 h, 0 m, 4.685361623764038 s;
+k: 2^12; input lenght: 2^14; Validated: True; time = 0 h, 0 m, 8.978862285614014 s;
+k: 2^13; input lenght: 2^14; Validated: True; time = 0 h, 0 m, 17.91125750541687 s;
