@@ -48,10 +48,13 @@ def Main():
     #list = MergesortLin(RandomNumbers, k)
     #list = MergesortBin(RandomNumbers, k)
     #list = Insertionsort(RandomNumbers)
-    list = TestBSort(RandomNumbers)
-
+    list = bSort(RandomNumbers)
     # prints time to run sorthing method
     print("Process finished --- %s seconds ---" % (time.time() - start_time))
+    if len(list) == len(RandomNumbers):
+        print("True")
+    else:
+        print("False")
 
     # validates the list    
     print(validate(list))

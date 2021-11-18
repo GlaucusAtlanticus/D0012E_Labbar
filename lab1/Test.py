@@ -27,6 +27,21 @@ def randomNR(size):
     print("done creating rand num")
     return RandomNumbers
 
+def halfSort(size):
+    halfSortList = []
+    i = 1
+
+    for x in range(1,size):
+        halfSortList.append(i%10)
+        i += 1
+
+    return halfSortList
+
+
+def sortedInput(size):
+    tmpList = randomNR(size)
+    tempList = bSort(tmpList)
+    return tempList
 
 # validates that the list is sorted
 def validate(lst):
