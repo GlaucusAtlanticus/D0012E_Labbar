@@ -58,7 +58,7 @@ def validate(lst):
 
 # Starts Sorting algorithms and prints sorted list
 #def Main():
-def testMergeBinarySortIterative(N):
+def testMergeBinarySort(N):
     f = open("Results.txt", "a")
     f.write("\n Merge BinarySort :\n")
     f.close
@@ -152,10 +152,10 @@ def testPureMergeSort(N):
 
 def Main():
     
-    N = 14           #will test up for list up to the size of 2^(N)
+    N = 10         #will test up for list up to the size of 2^(N)
 
     testPureMergeSort(N)
-    testMergeBinarySortIterative(N)
+    testMergeBinarySort(N)
     testMergeLinearSort(N)
 
 ### Start Main ####################################################################

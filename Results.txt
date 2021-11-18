@@ -31,3 +31,56 @@ k: 2^10; input lenght: 2^14; Validated: True; time = 0 h, 0 m, 2.515213489532470
 k: 2^11; input lenght: 2^14; Validated: True; time = 0 h, 0 m, 4.685361623764038 s;
 k: 2^12; input lenght: 2^14; Validated: True; time = 0 h, 0 m, 8.978862285614014 s;
 k: 2^13; input lenght: 2^14; Validated: True; time = 0 h, 0 m, 17.91125750541687 s;
+
+ Pure Mergesort:
+input length : 2^14; Validated: True; time = 0 h, 0 m, 0.24599313735961914 s;
+
+ Pure Mergesort:
+input length : 2^10; Validated: True; time = 0 h, 0 m, 0.026007890701293945 s;
+
+ Merge BinarySort :
+k: 2^1; input length: 2^10; Validated: True; time = 0 h, 0 m, 0.18602705001831055 s;
+k: 2^2; input length: 2^10; Validated: True; time = 0 h, 0 m, 0.07799339294433594 s;
+k: 2^3; input length: 2^10; Validated: True; time = 0 h, 0 m, 0.054007530212402344 s;
+k: 2^4; input length: 2^10; Validated: True; time = 0 h, 0 m, 0.03299832344055176 s;
+k: 2^5; input length: 2^10; Validated: True; time = 0 h, 0 m, 0.02500295639038086 s;
+k: 2^6; input length: 2^10; Validated: True; time = 0 h, 0 m, 0.020004749298095703 s;
+k: 2^7; input length: 2^10; Validated: True; time = 0 h, 0 m, 0.012009143829345703 s;
+k: 2^8; input length: 2^10; Validated: True; time = 0 h, 0 m, 0.011001348495483398 s;
+k: 2^9; input length: 2^10; Validated: True; time = 0 h, 0 m, 0.01098775863647461 s;
+
+ Merge LinearSort:
+k: 2^1; input lenght: 2^10; Validated: True; time = 0 h, 0 m, 0.12937378883361816 s;
+k: 2^2; input lenght: 2^10; Validated: True; time = 0 h, 0 m, 0.09302997589111328 s;
+k: 2^3; input lenght: 2^10; Validated: True; time = 0 h, 0 m, 0.05585622787475586 s;
+k: 2^4; input lenght: 2^10; Validated: True; time = 0 h, 0 m, 0.026024818420410156 s;
+k: 2^5; input lenght: 2^10; Validated: True; time = 0 h, 0 m, 0.02698230743408203 s;
+k: 2^6; input lenght: 2^10; Validated: True; time = 0 h, 0 m, 0.02799367904663086 s;
+k: 2^7; input lenght: 2^10; Validated: True; time = 0 h, 0 m, 0.020999670028686523 s;
+k: 2^8; input lenght: 2^10; Validated: True; time = 0 h, 0 m, 0.04500174522399902 s;
+k: 2^9; input lenght: 2^10; Validated: True; time = 0 h, 0 m, 0.08902859687805176 s;
+
+ Pure Mergesort:
+input length : 2^10; Validated: True; time = 0 h, 0 m, 0.010993719100952148 s;
+
+ Merge BinarySort :
+k: 2^1; input length: 2^10; Validated: True; time = 0 h, 0 m, 0.1539595127105713 s;
+k: 2^2; input length: 2^10; Validated: True; time = 0 h, 0 m, 0.0920262336730957 s;
+k: 2^3; input length: 2^10; Validated: True; time = 0 h, 0 m, 0.0740053653717041 s;
+k: 2^4; input length: 2^10; Validated: True; time = 0 h, 0 m, 0.030022144317626953 s;
+k: 2^5; input length: 2^10; Validated: True; time = 0 h, 0 m, 0.03200244903564453 s;
+k: 2^6; input length: 2^10; Validated: True; time = 0 h, 0 m, 0.02000117301940918 s;
+k: 2^7; input length: 2^10; Validated: True; time = 0 h, 0 m, 0.019002437591552734 s;
+k: 2^8; input length: 2^10; Validated: True; time = 0 h, 0 m, 0.020003795623779297 s;
+k: 2^9; input length: 2^10; Validated: True; time = 0 h, 0 m, 0.016001224517822266 s;
+
+ Merge LinearSort:
+k: 2^1; input lenght: 2^10; Validated: True; time = 0 h, 0 m, 0.18101143836975098 s;
+k: 2^2; input lenght: 2^10; Validated: True; time = 0 h, 0 m, 0.1120305061340332 s;
+k: 2^3; input lenght: 2^10; Validated: True; time = 0 h, 0 m, 0.06702733039855957 s;
+k: 2^4; input lenght: 2^10; Validated: True; time = 0 h, 0 m, 0.0260162353515625 s;
+k: 2^5; input lenght: 2^10; Validated: True; time = 0 h, 0 m, 0.028980731964111328 s;
+k: 2^6; input lenght: 2^10; Validated: True; time = 0 h, 0 m, 0.025005578994750977 s;
+k: 2^7; input lenght: 2^10; Validated: True; time = 0 h, 0 m, 0.03302788734436035 s;
+k: 2^8; input lenght: 2^10; Validated: True; time = 0 h, 0 m, 0.052005767822265625 s;
+k: 2^9; input lenght: 2^10; Validated: True; time = 0 h, 0 m, 0.08899855613708496 s;
