@@ -30,21 +30,24 @@ def randomNR(size):
     print("done creating rand num")
     return RandomNumbers
 
+
+# creates a half sorted list
 def halfSort(size):
     halfSortList = []
     i = 1
 
-    for x in range(1,size):
-        halfSortList.append(i%10)
+    for x in range(1,size):             # Size of the list
+        halfSortList.append(i%10)       # adds number 1 to 9 in a sequents
         i += 1
 
     return halfSortList
 
-
-def sortedInput(size):
-    tmpList = randomNR(size)
-    tempList = bSort(tmpList)
-    return tempList
+# creates a shorted list 
+def sortedInput(size):  
+    tmpList = []
+    for x in range(1, size):
+        tmpList.append(x)     
+    return tmpList
 
 # validates that the list is sorted
 def validate(lst):
