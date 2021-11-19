@@ -8,6 +8,10 @@
 def binarySearch(list):
 
 
+
+
+
+
  
     return
 
