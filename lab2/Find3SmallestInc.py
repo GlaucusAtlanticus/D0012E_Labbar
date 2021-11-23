@@ -1,9 +1,12 @@
 # Edvin Petterson
-# Jonatan Trefill
+# Jonatan Trefil
 # Rasmus Jacobsen
 
 # Lab 2
 # 2021.12.XX
+
+from SortSmallest import SortSmallest
+
 
 # Step by Step
 # 
@@ -19,6 +22,8 @@
 # 3. Retunera {x < y < z} (< rest)
 # 
 # #
+
+
 
 
 # Takes N values returns the 3 smallest elements 
@@ -44,29 +49,10 @@ def IncrementalFindElement(lst):
         else:
             return x, y, z
 
-# help function takes a list of tree elements return them 
-# in order so that x < y < z
-def SortSmallest(lst):
-    if lst[0] < lst[1] and lst[0] < lst[2]:
-        if lst[1] < lst[2]:
-            return lst[0], lst[1], lst[2]
-        else: 
-            return lst[0], lst[2], lst[1]
-    elif lst[1] < lst[0] and lst[1] < lst[2]:
-        if lst[0] < lst[2]:
-            return lst[1], lst[0], lst[2]
-        else: 
-            return lst[1], lst[2], lst[0]
-    else:
-        if lst[0] < lst[1]:
-            return lst[2], lst[0], lst[1]
-        else: 
-            return lst[2], lst[1], lst[0]
-
 
 # Used to se if the program works
 def main():
     lst = [5,3,5,7,1,34,54,6,6,45,7,4]
     print(IncrementalFindElement(lst))
 
-#main()
+main()
