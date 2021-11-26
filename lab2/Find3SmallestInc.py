@@ -31,6 +31,7 @@ def IncrementalFindElement(lst):
     # base case calls help function that sort/orders the list
     if len(lst) == 3:
         x, y, z = SortSmallest(lst)
+        return x, y, z
     # else do a recursive call
     else:
         x, y, z = IncrementalFindElement(lst[:-1])
