@@ -19,16 +19,3 @@ def Insertionsort(list):
             j = j-1                       # Lowers index value, ultimately towards 0 or until a smaller number is found.
     return list
 
-# Linear Plain text
-# Vårat input är en (osorterad) lista av N element 
-# Vårat Output är en (sorterad) lista av N element
-# 
-# Hur funktionen funkar
-# Funktionen funkar genom att man tar element (i)
-# Jämför det elementet (j) som är den del av listan
-#   ifall i > j 
-#       swapp
-#       iterate i 
-#   else 
-#       j++
-##### More to come ######

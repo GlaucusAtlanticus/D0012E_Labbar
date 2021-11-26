@@ -16,7 +16,7 @@ def MergesortBin(list, k):
     if k == 0:
         return bSort(list)
     else:
-        while (i*k) < len(list):        # runs ass long as i*k is not outside the list
+        while (i*k) < len(list):        # runs as long as i*k is not outside the list
             splitList.append(list[(i*k) : ((i+1)*k)])   # adds a segment of input list to split list
             i += 1                      # increment i 
 
