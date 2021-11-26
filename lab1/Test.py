@@ -2,20 +2,20 @@
 # Jonatan Trefill
 # Rasmus Jacobsen
 
-# Import needed funktions
+# Import needed functions
 import random
 import time
 
-# Imports the diffrent funktions
+# Imports the diffrent functions
 from LinearSearch import Insertionsort
 from BinarySearch import bSort
 from MergeSBinary import MergesortBin
+from MergeSNormal import Mergesort
 from MergeSLinear import MergesortLin
 
 
-### Lists ###################################################################################
 
-Numbers = [5, 7, 7, 10, 1, 4, 15, 3]
+### Lists ###################################################################################
 
 # Creates a large list with random numbers
 def randomNR(size):    
@@ -28,6 +28,24 @@ def randomNR(size):
     return RandomNumbers
 
 
+# creates a half sorted list
+def halfSort(size):
+    halfSortList = []
+    i = 1
+
+    for x in range(1,size):             # Size of the list
+        halfSortList.append(i%10)       # adds number 1 to 9 in a sequents
+        i += 1
+
+    return halfSortList
+
+# creates a shorted list 
+def sortedInput(size):  
+    tmpList = []
+    for x in range(1, size):
+        tmpList.append(x)     
+    return tmpList
+
 # validates that the list is sorted
 def validate(lst):
 
@@ -39,101 +57,106 @@ def validate(lst):
     return True
 
 # Starts Sorting algorithms and prints sorted list
-def Main():
+#def Main():
+def testMergeBinarySort(N):
     f = open("Results.txt", "a")
-    f.write("\n BSORT:\n")
+    f.write("\n Merge BinarySort :\n")
     f.close
-    k = 20  # k value
+    k = 1  # k start value
 
-    # Sort the list for all valid values of k 0 to 20 and N(^2) from 1 to 20
-    # k: number of sublists
-    # N: size of list as a power of two
+    # sublist size = 2^k
+    # list size = 2^N
 
-    while k >= 0:
-        N = 1 # power of two size of random list
-        while N <= 20:
-            unSortList = randomNR(pow(2, N))
+    while k < N:
+        unSortList = randomNR(pow(2, N))
 
-            #check that inputs are legal
-            if k >= len(unSortList):
-                N = N + 1
-                continue
+        start_time = time.time()                    # Time at start of test
+        sortList = MergesortBin(unSortList, pow(2, k))      # sort list using Mergesort binary
+        runTime = time.time() - start_time          # time taken to sort the list
 
-            start_time = time.time()                    # Time at start of test
-            sortList = MergesortBin(unSortList, k)      # sort list using Mergesort binary
-            runTime = time.time() - start_time          # time taken to sort the list
-
-            minutes, seconds = divmod(runTime, 60)      # Get time taken in hours, minutes and seconds
-            hours, minutes = divmod(minutes, 60)        #
+        minutes, seconds = divmod(runTime, 60)      # Get time taken in hours, minutes and seconds
+        hours, minutes = divmod(minutes, 60)        #
 
 
-            validated =  validate(sortList)             # Verify that the list got correctly sorted
+        validated =  validate(sortList)             # Verify that the list got correctly sorted
 
-            # print results to terminal
-            print("k: %s; N: %s; Validated: %s; time = %d h, %d m, %s s;\n" %(k, N, validated, hours, minutes, seconds))
+        # print results to terminal
+        print("k: 2^%s; N: %s; Validated: %s; time = %d h, %d m, %s s;\n" %(k, N, validated, hours, minutes, seconds))
             
-            #print(sortList)
+        #print(sortList)
 
-            # write results to file
-            f = open("Results.txt", "a")
-            f.write("k: %s; input lenght : 2^%s; Validated: %s; time = %d h, %d m, %s s;\n" %(k, N, validated, hours, minutes, seconds))
-            f.close
-            N = N + 1
-        k = k -1
-    
+        # write results to file
+        f = open("Results.txt", "a")
+        f.write("k: 2^%s; input length: 2^%s; Validated: %s; time = %d h, %d m, %s s;\n" %(k, N, validated, hours, minutes, seconds))
+        f.close
+        k = k + 1
+def testMergeLinearSort(N):
     f = open("Results.txt", "a")
-    f.write("\n LSORT:\n")
+    f.write("\n Merge LinearSort:\n")
     f.close
 
-    print("testing mergesort linear ")
-    k = 20  # k value
-    while k >= 0:
-        N = 1 # power of two size of random list
-        while N <= 20:
-            unSortList = randomNR(pow(2, N))
+    print("testing mergesort linear")
+    k = 1  # k value
 
-            # check that inputs are legal
-            if k >= len(unSortList):
-                print("bad batch")
-                N = N + 1
-                continue
+    # sublist size = 2^k
+    # list size = 2^N
 
-            start_time = time.time()                    # Time at start of test
-            sortList = MergesortLin(unSortList, k)      # sort list using Mergesort linear
-            runTime = time.time() - start_time          # time taken to sort the list
+    while k < N:
 
-            minutes, seconds = divmod(runTime, 60)      # Get time taken in hours, minutes and seconds
-            hours, minutes = divmod(minutes, 60)        #
+        unSortList = randomNR(pow(2, N))
+
+        start_time = time.time()                    # Time at start of test
+        sortList = MergesortLin(unSortList, pow(2, k))      # sort list using Mergesort linear
+        runTime = time.time() - start_time          # time taken to sort the list
+
+        minutes, seconds = divmod(runTime, 60)      # Get time taken in hours, minutes and seconds
+        hours, minutes = divmod(minutes, 60)        #
 
 
-            validated =  validate(sortList)             # Verify that the list got correctly sorted
+        validated =  validate(sortList)             # Verify that the list got correctly sorted
 
-            # print results to terminal
-            print("k: %s; N: %s; Validated: %s; time = %d h, %d m, %s s;\n" %(k, N, validated, hours, minutes, seconds))
+        # print results to terminal
+        print("k: 2^%s; N: %s; Validated: %s; time = %d h, %d m, %s s;\n" %(k, N, validated, hours, minutes, seconds))
 
-            #print(sortList)
+        # write results to file
+        f = open("Results.txt", "a")
+        f.write("k: 2^%s; input lenght: 2^%s; Validated: %s; time = %d h, %d m, %s s;\n" %(k, N, validated, hours, minutes, seconds))
+        f.close
+        k = k + 1
+def testPureMergeSort(N):
+    f = open("Results.txt", "a")
+    f.write("\n Pure Mergesort:\n")
+    f.close
 
-            # write results to file
-            f = open("Results.txt", "a")
-            f.write("k: %s; input lenght : 2^%s; Validated: %s; time = %d h, %d m, %s s;\n" %(k, N, validated, hours, minutes, seconds))
-            f.close
-            N = N + 1
-        k = k -1
+    # list size = 2^N
+
+    print("Testing PureMergesort")
+    unSortList = randomNR(pow(2, N))
+
+    start_time = time.time()                    # Time at start of test
+    sortList = Mergesort(unSortList)            # sort list using Mergesort
+    runTime = time.time() - start_time          # time taken to sort the list
+
+    minutes, seconds = divmod(runTime, 60)      # Get time taken in hours, minutes and seconds
+    hours, minutes = divmod(minutes, 60)        #
+
+    validated =  validate(sortList)             # Verify that the list got correctly sorted
+
+    # print results to terminal
+    print("N: %s; Validated: %s; time = %d h, %d m, %s s;\n" %(N, validated, hours, minutes, seconds))
+
+    # write results to file
+    f = open("Results.txt", "a")
+    f.write("input length : 2^%s; Validated: %s; time = %d h, %d m, %s s;\n" %( N, validated, hours, minutes, seconds))
+    f.close
+
+def Main():
     
+    N = 10         #will test up for list up to the size of 2^(N)
 
-
-
-
-
-
-
-
-
-
-
-
-    
-
+    testPureMergeSort(N)
+    testMergeBinarySort(N)
+    testMergeLinearSort(N)
 
 ### Start Main ####################################################################
 Main()
