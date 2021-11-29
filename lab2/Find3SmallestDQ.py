@@ -25,18 +25,22 @@ from SortSmallest import SortSmallest
 # 
 # #
 
+# Takes n values and returns the 3 smallest
 def DQ_FindSmallestElement(lst):
-    lstOne = []
-    lstTwo = []
-    if len(lst) == 3:
-        x, y, z, = SortSmallest(lst)
-        return x, y, z
-    else:
+    lstOne = [0, 0, 0]                  # Help List
+    lstTwo = [0, 0, 0]                  # Help List
+    if len(lst) == 3:                   # If Input is 3 sort the input
+        x, y, z = SortSmallest(lst)
+        return x, y, z                  # return the input sorted
+    else:                               # else
         halfList = round(len(lst)/2)
-        x1, y1, z1 = DQ_FindSmallestElement(lst[:halfList])
-        lstOne = [x1, y1, z1]
-        x2, y2, z2 = DQ_FindSmallestElement(lst[halfList:])
-        lstTwo = [x2, y2, z2]
+        lstOne[0], lstOne[1], lstOne[2] = DQ_FindSmallestElement(lst[:halfList])
+        lstTwo[0], lstTwo[1], lstTwo[2] = DQ_FindSmallestElement(lst[halfList:])
+        
+        #x1, y1, z1 = DQ_FindSmallestElement(lst[:halfList])
+        #lstOne = [x1, y1, z1]
+        #x2, y2, z2 = DQ_FindSmallestElement(lst[halfList:])
+        #lstTwo = [x2, y2, z2]
 
     awnserLst = []
     for mamma in lstOne:
