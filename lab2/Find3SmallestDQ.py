@@ -19,15 +19,15 @@ from SortSmallest import SortSmallest
 #       Return x < y < z
 # 1. Divide input in to equal size parts 
 # 2. Do recursive call on the first half(N / 2 [lower])
-# 3. Do recursive call on the secund half(N / 2 [upper])
-# 2. Compare awnser from first half whit secund half
+# 3. Do recursive call on the second half(N / 2 [upper])
+# 2. Compare awnser from first half with second half
 # 3. Return {x < y < z} (< rest)
 # 
 # #
 
 def DQ_FindSmallestElement(lst):
-    lstOne = []
-    lstTwo = []
+    lstOne = [0,0,0]
+    lstTwo = [0,0,0]
     if len(lst) == 3:
         x, y, z, = SortSmallest(lst)
         return x, y, z
@@ -38,15 +38,15 @@ def DQ_FindSmallestElement(lst):
         x2, y2, z2 = DQ_FindSmallestElement(lst[halfList:])
         lstTwo = [x2, y2, z2]
 
-    awnserLst = []
-    for mamma in lstOne:
-        for pappa in lstTwo:
-            if pappa < mamma:
-                awnserLst.append(pappa)
-                lstTwo.remove(pappa)
+    lstAnswer = []
+    for elementOne in lstOne:
+        for elementTwo in lstTwo:
+            if elementTwo < elementOne:
+                lstAnswer.append(elementTwo)
+                lstTwo.remove(elementTwo)
                 break
-        awnserLst.append(mamma)
-    return awnserLst[0], awnserLst[1], awnserLst[2]
+        lstAnswer.append(elementOne)
+    return lstAnswer[0], lstAnswer[1], lstAnswer[2]
 
 
 def main():
@@ -55,5 +55,3 @@ def main():
 
 main()
 
-def OrderSmallest(lst):
-    return 1, 2, 3
