@@ -46,7 +46,7 @@ def MaxSplit(list):
             endPointer = index
 
 
-    return maxSum, startPointer, endPointer
+    return maxSum, maxStartPointer, endPointer
 
 
 a = [0, 0, 0]
