@@ -12,41 +12,55 @@
 
 #Gives maximum sum of subarrays in given list
 def MaxSum(list):
-    print("hej")
 
+    length = len(list)
 
+    leftList = list[:length]                        # Divides lists
+    rightList = list[length:]
 
+    leftValue = MaxSplit(leftList)                  # Gets max sum of each split list and their indexes
+    rightValue = MaxSplit(rightList)
+
+    inbetween = Sum(list, leftValue[2], rightValue[1] + length/2)           # Calculates the sum between the 2 maxsums
+
+    if abs(inbetween) > leftValue[0] or abs(inbetween) > rightValue[0]:     # If the sum inbetween has a larger absolute value
+        if leftValue[0] < rightValue[0]:                                    # return either maxsum depending on their size
+            return rightValue[0]
+        else:
+            return leftValue[0]
+    else:
+        return inbetween + leftValue[0] + rightValue[0]                     # Returns both sums combined + inbetween sum if it is larger
 
 # Calculates sum between given indexes
-def Sum(list, left, right):
-    sum = 0
+def Sum(list, left, right):     
+    sum = 0                                       # Sets sum to 0
 
-    while left != right:
-        sum = sum + list[left]
-        left + 1
-    sum = sum + list[right]
+    while left != right:                          # Goes through all elements until last element equals current
+        sum = sum + list[left]                    # Adds element value to sum
+        left + 1                                  # Increases index
+    sum = sum + list[right]                       # Adds lasts element
 
 # Calculates sum of split lists
-def MaxSplit(list):
-    maxSum = 0
+def MaxSplit(list):                               
+    maxSum = 0                                    # Sets all variables to 0
     sum = 0
     startPointer = 0
     maxStartPointer = 0
     endPointer = 0
 
-    for index in range (0, len(list)):
-        sum = sum + list[index]
+    for index in range (0, len(list)):            # Goes through all elements
+        sum = sum + list[index]                   # Adds element value to sum
 
-        if sum < 0:
+        if sum < 0:                               # Resets sum to 0 if it gets negetive
             sum = 0
-            startPointer = index + 1
-        if sum > maxSum:
-            maxSum = sum
-            maxStartPointer = startPointer
-            endPointer = index
+            startPointer = index + 1              # Updates new start pointer
+        if sum > maxSum:                          # Update maxsum if sum is higher
+            maxSum = sum                          
+            maxStartPointer = startPointer        # Updates maxstartpointer
+            endPointer = index                    # Sets end index of sum  
 
 
-    return maxSum, startPointer, endPointer
+    return maxSum, maxStartPointer, endPointer    # Returns
 
 
 a = [0, 0, 0]
