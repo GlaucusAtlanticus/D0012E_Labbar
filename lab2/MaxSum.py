@@ -5,70 +5,60 @@
 # Lab 2
 # 2021.12.XX
 
+class Sum:
+  def __init__(self, maxPrefix, maxSufix, totalSum, maxSum):
+    self.maxPrefix = maxPrefix                          #the maximum sum of consecutive elements begining at the leftmost side
+    self.maxSufix = maxSufix                            #the maximum sum of consecutive elements begining at the rightmost side
+    self.totalSum = totalSum                            #The sum of all elements in the array
+    self.maxSum = maxSum                                #the maximum sum of consecutive elements in the array
+    
 
-# https://www.javatpoint.com/kadanes-algorithm-in-python#:~:text=Kadane%27s%20Algorithm%20is%20used%20to%20find%20the%20continuous,applying%20the%20brute-force%20approach%20and%20solving%20the%20problem.
+#p1 = Person("John", 36)
 
-
-
-#Gives maximum sum of subarrays in given list
 def MaxSum(list):
+    length = len(list)                                  #lenght of list
+    midpoint = int (length/ 2)                          #lenght of list / 2
 
-    length = len(list)
-
-    leftList = list[:length]                        # Divides lists
-    rightList = list[length:]
-
-    leftValue = MaxSplit(leftList)                  # Gets max sum of each split list and their indexes
-    rightValue = MaxSplit(rightList)
-
-    inbetween = Sum(list, leftValue[2], rightValue[1] + length/2)           # Calculates the sum between the 2 maxsums
-
-    if abs(inbetween) > leftValue[0] or abs(inbetween) > rightValue[0]:     # If the sum inbetween has a larger absolute value
-        if leftValue[0] < rightValue[0]:                                    # return either maxsum depending on their size
-            return rightValue[0]
-        else:
-            return leftValue[0]
+    if length == 1:                                     #when the list consists of a single element return 
+        s1 = Sum(list[0],list[0],list[0],list[0])       #all vars in Sum is set to the single elements value
+        return s1
     else:
-        return inbetween + leftValue[0] + rightValue[0]                     # Returns both sums combined + inbetween sum if it is larger
+        leftList = list[:midpoint]                      # Divides list into two equaly sized parts
+        rightList = list[midpoint:]
 
-# Calculates sum between given indexes
-def Sum(list, left, right):     
-    sum = 0                                       # Sets sum to 0
+        L = MaxSum(leftList)                            # call upon itself for left and right subarray
+        R = MaxSum(rightList)
 
-    while left != right:                          # Goes through all elements until last element equals current
-        sum = sum + list[left]                    # Adds element value to sum
-        left + 1                                  # Increases index
-    sum = sum + list[right]                       # Adds lasts element
+        #totalsum                                       The sum of all elements in the array
+        totalSum = L.totalSum + R.totalSum              
 
-# Calculates sum of split lists
-def MaxSplit(list):                               
-    maxSum = 0                                    # Sets all variables to 0
-    sum = 0
-    startPointer = 0
-    maxStartPointer = 0
-    endPointer = 0
+        #maxPrefix                                      the maximum sum of consecutive elements begining at the leftmost side
+        if L.maxPrefix > L.totalSum + R.maxPrefix: 
+            maxPrefix = L.maxPrefix
+        else:
+            maxPrefix = L.totalSum + R.maxPrefix
+        
+        #MaxSuffix                                      the maximum sum of consecutive elements begining at the rightmost side
+        if R.maxSufix > R.totalSum + L.maxSufix:
+            maxSufix = R.maxSufix
+        else:
+            maxSufix =  R.totalSum + L.maxSufix
 
-    for index in range (0, len(list)):            # Goes through all elements
-        sum = sum + list[index]                   # Adds element value to sum
+        #MaxSum                                         the maximum sum of consecutive elements in the array
+        if (R.maxSum > L.maxSum) and (R.maxSum > L.maxSufix + R.maxPrefix):     
+            maxSum = R.maxSum
+        elif (L.maxSum > R.maxSum) and (L.maxSum > L.maxSufix + R.maxPrefix):
+            maxSum = L.maxSum
+        else:
+            maxSum = L.maxSufix + R.maxPrefix
+        
+        s1 = Sum(maxPrefix, maxSufix, totalSum, maxSum)
 
-        if sum < 0:                               # Resets sum to 0 if it gets negetive
-            sum = 0
-            startPointer = index + 1              # Updates new start pointer
-        if sum > maxSum:                          # Update maxsum if sum is higher
-            maxSum = sum                          
-            maxStartPointer = startPointer        # Updates maxstartpointer
-            endPointer = index                    # Sets end index of sum  
-
-
-    return maxSum, maxStartPointer, endPointer    # Returns
+        return s1
 
 
-a = [0, 0, 0]
-
-lista = [5,-3,5,7,1,-34,-54,6,-6,-45,7,4]
-
-a[0], a[1], a[2] = MaxSplit(lista)
-
-print(a[0])
-print(a[1])
-print(a[2])
+def Main():
+    lista = [5,-3,5,7,1,-10,20,6,-6,-45,7,4,-1,-25,10,-40]
+    s1 = MaxSum(lista)
+    print(s1.maxSum)
+Main()
