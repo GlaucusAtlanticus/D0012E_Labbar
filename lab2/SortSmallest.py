@@ -6,9 +6,6 @@
 # 2021.12.XX
 
 
-
-
-
 # help function takes a list of tree elements return them 
 # in order so that x < y < z
 # Input: [x, y, z]
