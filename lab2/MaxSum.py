@@ -11,9 +11,7 @@ class Sum:
     self.maxSufix = maxSufix                            #the maximum sum of consecutive elements begining at the rightmost side
     self.totalSum = totalSum                            #The sum of all elements in the array
     self.maxSum = maxSum                                #the maximum sum of consecutive elements in the array
-    
 
-#p1 = Person("John", 36)
 
 def MaxSum(list):
     length = len(list)                                  #lenght of list
