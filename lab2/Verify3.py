@@ -14,4 +14,14 @@ from SortSmallest import SortSmallest
 # Input: Full list, list of 3 elements in list
 # Output: True/False
 def Verify(lst, xyz):
-   print("temporary")
+   
+    if xyz == SortSmallest(xyz):
+        for element in lst:
+            
+            if element < xyz[0]:
+                return False
+            
+            
+                
+    else: 
+        return False
