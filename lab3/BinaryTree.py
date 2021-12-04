@@ -9,9 +9,11 @@
 # Class for creating and handling a Binary Tree
 class BinaryTree:
     def __init__(self, value):
-        root = Node(value)
+        self.root = Node(value)                     # Sets the value of the first node when creating the Tree
+
 
     # Checks if a given value exists in the tree
+    # Because of the implementation we must always give root as argument
     def search(node, value):
         if value == node.value:                     # Checks if value is in current node
             print("Value is in Tree!")
@@ -33,6 +35,9 @@ class BinaryTree:
 
 
 
+    # Prints the Tree out visually
+    def display():
+        print("temp")
 
 
 
