@@ -14,25 +14,33 @@ class BinaryTree:
 
     # Checks if a given value exists in the tree
     # Because of the implementation we must always give root as argument
-    def search(node, value):
+    def search(self, node, value):
         if value == node.value:                     # Checks if value is in current node
-            print("Value is in Tree!")
-            return
+            return True
         elif value < node.value:                    
             if node.left == None:                   # If element is smaller but a smaller does not exists
-                print("Value not in Tree =(")
-                return
+                return False
             else:
-                search(node.left, value)
+                self.search(node.left, value)
                 return
         else:
             if node.right == None:                  # If element is larger but a larger does not exists
-                print("Value not in Tree =(")
-                return
+                return False
             else:
-                search(node.right, value)
+                self.search(node.right, value)
                 return
 
+    # Gives a text output to if the value is in the tree
+    # Does not need root as argument
+    def isValueInTree(self, value):
+        answer = self.search(self, self.root, value)
+
+        if answer:
+            print("Value is in the Tree!")
+        else:
+            print("Value is not in the Tree =(")
+
+        return
 
 
     # Prints the Tree out visually
@@ -42,8 +50,16 @@ class BinaryTree:
 
 
     # Insert a node with a given value into a tree
-    def insert():
-        print("temp")
+    def insert(self, value):
+        answer = self.search(self, self.root, value)
+
+        if answer:
+            print("Answer is already in Tree.")
+        else:
+            print("temp")
+
+
+
 
 # Class for creating a node and it's value
 class Node:
