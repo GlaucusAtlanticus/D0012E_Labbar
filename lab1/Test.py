@@ -7,12 +7,10 @@ import random
 import time
 
 # Imports the diffrent functions
-from LinearSearch import Insertionsort
-from BinarySearch import bSort
 from MergeSBinary import MergesortBin
 from MergeSNormal import Mergesort
 from MergeSLinear import MergesortLin
-
+from MergeSBinary import MergesortBinSecundIteration
 
 
 ### Lists ###################################################################################
@@ -90,6 +88,7 @@ def testMergeBinarySort(N):
         f.write("k: 2^%s; input length: 2^%s; Validated: %s; time = %d h, %d m, %s s;\n" %(k, N, validated, hours, minutes, seconds))
         f.close
         k = k + 1
+        
 def testMergeLinearSort(N):
     f = open("Results.txt", "a")
     f.write("\n Merge LinearSort:\n")
@@ -123,6 +122,8 @@ def testMergeLinearSort(N):
         f.write("k: 2^%s; input lenght: 2^%s; Validated: %s; time = %d h, %d m, %s s;\n" %(k, N, validated, hours, minutes, seconds))
         f.close
         k = k + 1
+
+
 def testPureMergeSort(N):
     f = open("Results.txt", "a")
     f.write("\n Pure Mergesort:\n")
@@ -150,13 +151,29 @@ def testPureMergeSort(N):
     f.write("input length : 2^%s; Validated: %s; time = %d h, %d m, %s s;\n" %( N, validated, hours, minutes, seconds))
     f.close
 
+
+def testCode(N):
+    k = 2
+
+    unSortList = randomNR(pow(2, N))
+
+    start_time = time.time()                    # Time at start of test
+    sortList = MergesortBinSecundIteration(unSortList, pow(2, k))            # sort list using Mergesort
+    runTime = time.time() - start_time          # time taken to sort the list
+    
+    validated =  validate(sortList)             # Verify that the list got correctly sorted
+
+    print("runTime:", runTime, "; Validated:", validated)
+
 def Main():
     
     N = 10         #will test up for list up to the size of 2^(N)
 
-    testPureMergeSort(N)
-    testMergeBinarySort(N)
-    testMergeLinearSort(N)
+    #testPureMergeSort(N)
+    #testMergeBinarySort(N)
+    #testMergeLinearSort(N)
+
+    testCode(N)
 
 ### Start Main ####################################################################
 Main()
