@@ -8,12 +8,12 @@
 
 # Class for creating a node and it's value
 class Node:
-    size = None
-    parent = None
-    left = None
-    right = None
-
     def __init__(self, value, root):
         self.value = value
         self.parent = root
+        
+        self.left = None
+        self.right = None
         self.size = 1
+
+

@@ -14,11 +14,11 @@ class Node():
     left = None     # the node left of this node
     right = None    # the node right of this node
 
-    def __init__(self, value, root, c):
+    def __init__(self, value, root):
         self.value = value  # this nodes value
         self.parent = root  # sets the root node
         self.size = 1       # sets size att one
-        self.c = c          # sets the constraint
+        #self.c = c          # sets the constraint
 
     
     ###################################### 
@@ -47,16 +47,10 @@ class Node():
         self.size = temp
 
     # creates a child 
-    def createChild(self, value):
-        if self.key < value:
-            self.right = Node(value, self)
-            self.updateSize()
-        elif self.key > value:
-            self.left = Node(value, self)
-            self.updateSize()
-        else:
-            print("Woops i can not get pregnant")
-    
+    def setLeft(self, node):
+        self.left = node
+    def setRight(self, node):
+        self.right = node
 
 # class for the binary tree
 class BinTree():
@@ -91,14 +85,14 @@ class BinTree():
             if node.getRight() != None:
                 tmp = self.insert(value, node.getRight())
             else:
-                node.createChild(value)
+                node.setRight(Node(value, node))
                 return True
         # if the value is to the left of the node
         elif node.getKey() > value:
             if node.getLeft() != None:
                 tmp = self.insert(value, node.getRight)
-            else: 
-                node.createChild(value)
+            else:
+                node.setRight(Node(value, node))
                 return True
         
         return tmp
