@@ -7,11 +7,13 @@
 
 from Node import Node
 
+from lab3.Node import Node
+
+
 # Class for creating and handling a Binary Tree
 class BinaryTree:
     def __init__(self, value):
         self.root = Node(value, None)                     # Sets the value of the first node when creating the Tree
-
 
     # Checks if a given value exists in the tree
     # Because of the implementation we must always give root as argument

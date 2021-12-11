@@ -16,4 +16,13 @@ class Node:
         self.right = None
         self.size = 1
 
+    # updates the size
+    def updateSize(self):       # sums the size of the nodes below it
+        temp = 1
+        if self.left != None:
+            temp += self.left.getSize(self.left)
 
+        if self.right != None:
+            temp += self.right.getSize(self.right)
+
+        self.size = temp
