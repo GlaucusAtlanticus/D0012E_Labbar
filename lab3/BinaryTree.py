@@ -66,6 +66,27 @@ class BinaryTree:
             else:
                 return self.search(node.right, value)
 
+    
+    def delete(self, node, value):
+        if value == node.value:
+            parent = node.parent
+            left = node.left
+            right = node.right
+
+            if node.right == None:
+                if value < parent.value:
+                    parent.left = node.left
+                else:
+                    parent.right = node.left
+            else:
+                print("temp")
+
+        elif value < node.value:
+            self.delete(node.left, value)
+        else:
+            self.delete(node.right, value)
+
+
 def Main():
     tree = BinaryTree(10)
 
