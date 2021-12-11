@@ -5,6 +5,7 @@
 # Lab 3
 # 2021.12.XX
 
+from Node import Node
 
 # Class for creating and handling a Binary Tree
 class BinaryTree:
@@ -21,19 +22,18 @@ class BinaryTree:
             if node.left == None:                   # If element is smaller but a smaller does not exists
                 return False
             else:
-                self.search(node.left, value)
-                return
+                return self.search(node.left, value)
         else:
             if node.right == None:                  # If element is larger but a larger does not exists
                 return False
             else:
-                self.search(node.right, value)
-                return
+                return self.search(node.right, value)
+                
 
     # Gives a text output to if the value is in the tree
     # Does not need root as argument
     def isValueInTree(self, value):
-        answer = self.search(self, self.root, value)
+        answer = self.search(self.root, value)
 
         if answer:
             print("Value is in the Tree!")
@@ -50,11 +50,28 @@ class BinaryTree:
 
 
     # Insert a node with a given value into a tree
-    def insert(self, value):
-        answer = self.search(self, self.root, value)
-
-        if answer:
-            print("Answer is already in Tree.")
+    def insert(self, node, value):
+        if value == node.value:                     # Checks if value is in current node
+            return False
+        elif value < node.value:                    
+            if node.left == None:                   # If element is smaller but a smaller does not exists
+                node.left = Node(value, node)
+                return True
+            else:
+                return self.search(node.left, value)     
         else:
-            print("temp")
+            if node.right == None:                  # If element is larger but a larger does not exists
+                node.right = Node(value, node)
+                return True
+            else:
+                return self.search(node.right, value)
 
+def Main():
+    tree = BinaryTree(10)
+
+    tree.isValueInTree(15)
+
+    tree.insert(tree.root, 15)
+
+    tree.isValueInTree(15)
+Main()
