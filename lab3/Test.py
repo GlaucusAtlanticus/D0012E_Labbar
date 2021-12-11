@@ -8,17 +8,24 @@
 
 
 # to test run the diffrent nodes
-from lab3.BinaryTree import BinaryTree
+from BinaryTree import BinaryTree
 
 
 def main():
     tree = BinaryTree(10)
 
-    tree.isValueInTree(15)
+    tree.isValueInTree(9)
 
-    tree.insert(tree.root, 15)
+    tree.insert(tree.root, 9)
+    tree.insert(tree.root, 8)
+    tree.insert(tree.root, 7)
+    
+    tree.isValueInTree(7)
 
-    tree.isValueInTree(15)
+    node = tree.searchDelete(tree.root)
+    print("Nodens value", node.key)
+    tree.isValueInTree(7)
+
     return "mamma"
 
 main()

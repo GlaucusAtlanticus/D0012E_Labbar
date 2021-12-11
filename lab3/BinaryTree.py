@@ -80,7 +80,7 @@ class BinaryTree:
                 else:
                     parent.right = node.left
             else:
-                print("temp")
+                node = self.searchDelete(node)
 
         elif value < node.value:
             self.delete(node.left, value)
