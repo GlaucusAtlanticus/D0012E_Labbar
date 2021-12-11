@@ -60,13 +60,13 @@ class BinaryTree:
                 node.left = Node(value, node)
                 return True
             else:
-                return self.search(node.left, value)     
+                return self.insert(node.left, value)     
         else:
             if node.right == None:                  # If element is larger but a larger does not exists
                 node.right = Node(value, node)
                 return True
             else:
-                return self.search(node.right, value)
+                return self.insert(node.right, value)
 
     def delete(self, node, value):
         if value == node.value:
@@ -103,4 +103,6 @@ def Main():
     tree.insert(tree.root, 15)
 
     tree.isValueInTree(15)
+
+    tree.insert(tree.root, 15)
 Main()
