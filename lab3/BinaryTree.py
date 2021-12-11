@@ -5,15 +5,16 @@
 # Lab 3
 # 2021.12.XX
 
-from Node import Node
+#from Node import Node
 
 from lab3.Node import Node
 
 
 # Class for creating and handling a Binary Tree
 class BinaryTree:
-    def __init__(self, value):
+    def __init__(self, value, c = 0.5):
         self.root = Node(value, None)                     # Sets the value of the first node when creating the Tree
+        self.constraint = c
 
     # Checks if a given value exists in the tree
     # Because of the implementation we must always give root as argument
@@ -30,8 +31,7 @@ class BinaryTree:
                 return False
             else:
                 return self.search(node.right, value)
-                
-
+    
     # Gives a text output to if the value is in the tree
     # Does not need root as argument
     def isValueInTree(self, value):
@@ -68,7 +68,6 @@ class BinaryTree:
             else:
                 return self.search(node.right, value)
 
-    
     def delete(self, node, value):
         if value == node.value:
             parent = node.parent
@@ -87,6 +86,13 @@ class BinaryTree:
             self.delete(node.left, value)
         else:
             self.delete(node.right, value)
+
+    def searchDelete(self, node):
+        if node.left != None:
+            return self.searchDelete(node.left)
+        else:
+            node.parent.left = None
+            return node
 
 
 def Main():
