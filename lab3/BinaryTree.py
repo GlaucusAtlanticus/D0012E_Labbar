@@ -5,10 +5,7 @@
 # Lab 3
 # 2021.12.XX
 
-#from Node import Node
-
-from lab3.Node import Node
-
+from Node import Node
 
 # Class for creating and handling a Binary Tree
 class BinaryTree:
@@ -80,7 +77,14 @@ class BinaryTree:
                 else:
                     parent.right = node.left
             else:
-                node = self.searchDelete(node)
+                leaf = self.searchDelete(node.right)
+                leaf.left = left
+                leaf.right = right
+
+                if value < parent.value:
+                    parent.left = leaf
+                else:
+                    parent.right = leaf
 
         elif value < node.value:
             self.delete(node.left, value)
@@ -105,4 +109,18 @@ def Main():
     tree.isValueInTree(15)
 
     tree.insert(tree.root, 15)
+
+    tree.insert(tree.root, 16)
+
+    tree.insert(tree.root, 14)
+
+    tree.delete(tree.root, 15)
+
+    tree.isValueInTree(14)
+
+    tree.isValueInTree(15)
+
+    tree.isValueInTree(16)
+
+
 Main()
