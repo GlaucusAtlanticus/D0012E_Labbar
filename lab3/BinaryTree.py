@@ -48,17 +48,21 @@ class BinaryTree:
 
     def checkConstraint(self, node):
         node.updateSize()
-        #print(node.parent)
-        if node.parent == None:
-            return print("I do not have a parent")
+        temp = self.constraint * (node.size)
         
-        temp = self.constraint * (node.parent.size + 1)
+        if node.left != None:
 
-        if node.size > temp:
-            print("please rearrange")
-        else:
-            print("balance as all thing souled be")
+            if node.left.size > temp:
+                print("please rearrange")
+            else:
+                print("balance as all thing souled be")
 
+        if node.right != None:
+
+            if node.right.size > temp:
+                print("please rearrange")
+            else:
+                print("balance as all thing souled be") 
 
     # Insert a node with a given value into a tree
     def insert(self, node, value):
