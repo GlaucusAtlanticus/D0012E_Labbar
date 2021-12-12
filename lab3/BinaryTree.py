@@ -65,6 +65,10 @@ class BinaryTree:
             else:
                 print("Perfectly balanced as all things should be") 
 
+    def rearrange(First, Second):
+        
+
+
     # Insert a node with a given value into a tree
     def insert(self, node, value):
         if value == node.value:                     # Checks if value is in current node
@@ -132,12 +136,15 @@ class BinaryTree:
     def leftRotation(self, root, pivot):
         root.left = pivot.right
         pivot.right = root
+        pivot.parent = root.parent
+        root.parent = pivot
 
     # Rotates certain nodes in tree to the right
     def rightRotation(self, root, pivot):
         root.right = pivot.left
         pivot.left = root
-
+        pivot.parent = root.parent
+        root.parent = pivot
 
 def Main():
     tree = BinaryTree(10)
