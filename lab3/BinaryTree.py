@@ -65,8 +65,8 @@ class BinaryTree:
             else:
                 print("Perfectly balanced as all things should be") 
 
-    def rearrange(First, Second):
-        
+
+
 
 
     # Insert a node with a given value into a tree
