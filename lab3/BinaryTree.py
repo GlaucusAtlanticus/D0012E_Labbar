@@ -17,7 +17,7 @@ class BinaryTree:
     # Because of the implementation we must always give root as argument
     def search(self, node, value):
         if value == node.value:                     # Checks if value is in current node
-            return True
+            return node
         elif value < node.value:                    
             if node.left == None:                   # If element is smaller but a smaller does not exists
                 return False
@@ -34,7 +34,7 @@ class BinaryTree:
     def isValueInTree(self, value):
         answer = self.search(self.root, value)
 
-        if answer:
+        if answer != False:
             print("Value is in the Tree!")
         else:
             print("Value is not in the Tree =(")
@@ -65,35 +65,37 @@ class BinaryTree:
             else:
                 return self.insert(node.right, value)
 
-    def delete(self, node, value):
-        if value == node.value:
-            parent = node.parent
-            left = node.left
-            right = node.right
+    def delete(self, value):
+        node = self.search(self.root, value)
+        if node == False:
+            print("Kunde inte radera värdet det existerar ej")
+            return 
 
-            if node.right == None:
-                if value < parent.value:
-                    parent.left = node.left
-                else:
-                    parent.right = node.left
+        parent = node.parent
+        left = node.left
+        right = node.right
+
+        if node.right == None:
+            if value < parent.value:
+                parent.left = node.left
             else:
-                leaf = self.searchDelete(node.right)
-                leaf.left = left
-                leaf.right = right
-
-                if value < parent.value:
-                    parent.left = leaf
-                else:
-                    parent.right = leaf
-
-        elif value < node.value:
-            self.delete(node.left, value)
+                parent.right = node.right
         else:
-            self.delete(node.right, value)
+            leaf = self.searchAndCut(node.right)
+        
+            leaf.right = right
+            leaf.left = left
 
-    def searchDelete(self, node):
+            if leaf.value < parent.value:
+                parent.left = leaf
+            else:
+                parent.right = leaf
+
+    def searchAndCut(self, node):
         if node.left != None:
-            return self.searchDelete(node.left)
+            leaf = self.searchAndCut(node.left)
+            node.updateSize()
+            return leaf
         else:
             node.parent.left = None
             return node
@@ -114,7 +116,7 @@ def Main():
 
     tree.insert(tree.root, 14)
 
-    tree.delete(tree.root, 15)
+    tree.delete(15)
 
     tree.isValueInTree(14)
 
