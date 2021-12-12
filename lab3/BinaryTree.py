@@ -46,6 +46,7 @@ class BinaryTree:
     def display():
         print("temp")
 
+    # Updates the sum value of each node and checks if it breaks constraint
     def checkConstraint(self, node):
         node.updateSize()
         temp = self.constraint * (node.size)
@@ -90,6 +91,7 @@ class BinaryTree:
                 self.checkConstraint(node)
                 return temp
 
+    # Deletes a node from the tree
     def delete(self, value):
         node = self.search(self.root, value)
         if node == False:
@@ -116,6 +118,7 @@ class BinaryTree:
             else:
                 parent.right = leaf
 
+    # Finds the leftmost node copies it and delets it
     def searchAndCut(self, node):
         if node.left != None:
             leaf = self.searchAndCut(node.left)
@@ -124,6 +127,16 @@ class BinaryTree:
         else:
             node.parent.left = None
             return node
+
+    # Rotates certain nodes in tree to the left
+    def leftRotation(self, root, pivot):
+        root.left = pivot.right
+        pivot.right = root
+
+    # Rotates certain nodes in tree to the right
+    def rightRotation(self, root, pivot):
+        root.right = pivot.left
+        pivot.left = root
 
 
 def Main():
