@@ -46,6 +46,18 @@ class BinaryTree:
     def display():
         print("temp")
 
+    def checkConstraint(self, node):
+        node.updateSize()
+        #print(node.parent)
+        if node.parent == None:
+            return print("I do not have a parent")
+        
+        temp = self.constraint * (node.parent.size + 1)
+
+        if node.size > temp:
+            print("please rearrange")
+        else:
+            print("balance as all thing souled be")
 
 
     # Insert a node with a given value into a tree
@@ -55,15 +67,24 @@ class BinaryTree:
         elif value < node.value:                    
             if node.left == None:                   # If element is smaller but a smaller does not exists
                 node.left = Node(value, node)
+                
+                print("inserted: ", value)
+                self.checkConstraint(node)
                 return True
             else:
-                return self.insert(node.left, value)     
+                temp = self.insert(node.left, value)
+                self.checkConstraint(node)
+                return temp
         else:
             if node.right == None:                  # If element is larger but a larger does not exists
                 node.right = Node(value, node)
+                print("inserted: ", value)
+                self.checkConstraint(node)
                 return True
             else:
-                return self.insert(node.right, value)
+                temp = self.insert(node.right, value)
+                self.checkConstraint(node)
+                return temp
 
     def delete(self, value):
         node = self.search(self.root, value)
@@ -104,25 +125,17 @@ class BinaryTree:
 def Main():
     tree = BinaryTree(10)
 
-    tree.isValueInTree(15)
+    #tree.isValueInTree(15)
 
     tree.insert(tree.root, 15)
 
-    tree.isValueInTree(15)
-
-    tree.insert(tree.root, 15)
+    #tree.isValueInTree(15)
 
     tree.insert(tree.root, 16)
 
-    tree.insert(tree.root, 14)
+    tree.insert(tree.root, 17)
 
-    tree.delete(15)
-
-    tree.isValueInTree(14)
-
-    tree.isValueInTree(15)
-
-    tree.isValueInTree(16)
+    tree.insert(tree.root, 18)
 
 
 Main()
