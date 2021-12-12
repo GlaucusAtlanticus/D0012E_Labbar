@@ -63,7 +63,7 @@ class BinaryTree:
             if node.right.size > temp:
                 print("please rearrange")
             else:
-                print("balance as all thing souled be") 
+                print("Perfectly balanced as all things should be") 
 
     # Insert a node with a given value into a tree
     def insert(self, node, value):
