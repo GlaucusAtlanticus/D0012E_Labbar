@@ -49,7 +49,16 @@ class BinaryTree:
         
         while len(queue) != 0:
             if queue[0] != None:
-                print(queue[0].value, " | ", queue[0].left , " ; ", queue[0].right)
+                try:
+                    print(queue[0].value, " | ", queue[0].left.value , " ; ", queue[0].right.value)
+                except AttributeError:
+                    if queue[0].left == None and queue[0].right != None:
+                        print(queue[0].value, " | ", queue[0].left , " ; ", queue[0].right.value)
+                    elif queue[0].left != None and queue[0].right == None:
+                        print(queue[0].value, " | ", queue[0].left.value , " ; ", queue[0].right)
+                    else:
+                        print(queue[0].value, " | ", queue[0].left , " ; ", queue[0].right)
+                 #   print(queue[0], " | ", queue[0] , " ; ", queue[0])
                 queue.append(queue[0].left)
                 queue.append(queue[0].right)
             queue.pop(0)
