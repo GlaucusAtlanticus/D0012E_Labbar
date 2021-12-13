@@ -6,6 +6,7 @@
 # 2021.12.XX
 
 from Node import Node
+import math
 
 # Class for creating and handling a Binary Tree
 class BinaryTree:
@@ -43,8 +44,16 @@ class BinaryTree:
 
 
     # Prints the Tree out visually
-    def display():
-        print("temp")
+    def display(self):
+        queue = [self.root]
+        
+        while len(queue) != 0:
+            if queue[0] != None:
+                print(queue[0].value, " | ", queue[0].left , " ; ", queue[0].right)
+                queue.append(queue[0].left)
+                queue.append(queue[0].right)
+            queue.pop(0)
+
 
     # Updates the sum value of each node and checks if it breaks constraint
     def checkConstraint(self, node):
@@ -64,9 +73,6 @@ class BinaryTree:
                 print("please rearrange")
             else:
                 print("Perfectly balanced as all things should be") 
-
-
-
 
 
     # Insert a node with a given value into a tree
@@ -160,6 +166,6 @@ def Main():
     tree.insert(tree.root, 17)
 
     tree.insert(tree.root, 18)
-
+    tree.display()
 
 Main()

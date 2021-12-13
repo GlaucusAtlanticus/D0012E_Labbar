@@ -1,0 +1,37 @@
+
+def rotate(self, node):
+    parent = node.parent
+    rightOfParent = False
+    problemRight = False
+
+    if node.size > parent.size:
+        rightOfParent = True
+    if node.left.size < node.right.size:
+        problemRight = True
+
+    if rightOfParent and problemRight:
+        self.leftRot(parent, node)
+    elif rightOfParent and not problemRight:
+        leftChild = node.left
+        self.rightRot(node, node.left)
+        parent.right = leftChild
+        self.leftRot(parent, node)
+    elif (not rightOfParent) and (not problemRight):
+        self.rightRot(parent, node)
+    else:
+        rightChild = node.right
+        self.leftRot(node, node.right)
+        parent.left = rightChild
+        self.rightRot(parent, node)
+
+def leftRot(self, root, pivot):
+    root.right = pivot.left
+    pivot.left = root
+    pivot.parent = root.parent
+    root.parent = pivot
+
+def rightRot(self, root, pivot):
+    root.left = pivot.right
+    pivot.right = root
+    pivot.parent = root.parent
+    root.parent = pivot
