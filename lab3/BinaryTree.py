@@ -12,7 +12,7 @@ import math
 class BinaryTree:
     def __init__(self, value, c = 0.5):
         self.root = Node(value, None)               # Sets the value of the first node when creating the Tree
-        self.constraint = c
+        self.constraint = c                         # Value of the constraint. Higher is more mild constraint allowing for a bigger unbalance.
 
     # Checks if a given value exists in the tree
     # Because of the implementation we must always give root as argument
