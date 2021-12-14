@@ -120,18 +120,18 @@ class BinaryTree:
         left = node.left
         right = node.right
 
-        if node.right == None:
-            if value < parent.value:
-                parent.left = node.left
+        if node.right == None:                              # If a subtree to the right does not exist
+            if value < parent.value:                        # And node is smalle than parent
+                parent.left = node.left                     # Parents left subtree is now nodes left subtree
             else:
-                parent.right = node.right
+                parent.right = node.left                    # If node is larger than parent we put nodes left subtree as parents right subtree
         else:
-            leaf = self.searchAndCut(node.right)
+            leaf = self.searchAndCut(node.right)            # If a node to the right exists we retrive the leftmost node of it
         
-            leaf.right = right
-            leaf.left = left
+            leaf.right = right                              # Set the deleted node's right subtree as the leafs right subtree
+            leaf.left = left                                # Same but left
 
-            if leaf.value < parent.value:
+            if leaf.value < parent.value:                   # Sets the leafs new parent accordingly, if smalle or bigger than parent
                 parent.left = leaf
             else:
                 parent.right = leaf
