@@ -151,6 +151,10 @@ class BinaryTree:
     def leftRotation(self, root, pivot):
         root.left = pivot.right
         pivot.right = root
+
+        if root == self.root:
+            pivot = root
+
         pivot.parent = root.parent
         root.parent = pivot
 
@@ -158,6 +162,10 @@ class BinaryTree:
     def rightRotation(self, root, pivot):
         root.right = pivot.left
         pivot.left = root
+
+        if root == self.root:
+            pivot = root
+            
         pivot.parent = root.parent
         root.parent = pivot
 
