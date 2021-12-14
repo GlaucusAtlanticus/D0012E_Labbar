@@ -141,7 +141,7 @@ class BinaryTree:
     def searchAndCut(self, node):
         if node.left != None:                       # Checks if a node exists to the left
             leaf = self.searchAndCut(node.left)     # Finds the leftmost node, copies it and deletes it
-            node.updateSize()                       # Updates the size as now a node is removed
+            self.checkConstraint(node)              # Updates the size as now a node is removed
             return leaf
         else:
             node.parent.left = None                 # Delete the connection between the parent and leaf
