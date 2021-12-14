@@ -165,24 +165,20 @@ class BinaryTree:
 
         if root == self.root:
             pivot = root
-            
+
         pivot.parent = root.parent
         root.parent = pivot
 
 def Main():
     tree = BinaryTree(10)
 
-    #tree.isValueInTree(15)
+    tree.insert(tree.root, 5)
 
     tree.insert(tree.root, 15)
 
-    #tree.isValueInTree(15)
+    tree.insert(tree.root, 20)
 
-    tree.insert(tree.root, 16)
-
-    tree.insert(tree.root, 17)
-
-    tree.insert(tree.root, 18)
+    tree.insert(tree.root, 25)
     tree.display()
 
 Main()
