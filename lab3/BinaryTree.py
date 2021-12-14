@@ -149,11 +149,11 @@ class BinaryTree:
 
     # Rotates 2 nodes in tree to the left
     def leftRotation(self, root, pivot):
-        root.right = pivot.left
+        root.right = pivot.left             # Switcher the pivots left subtree
         pivot.left = root
 
         if root == self.root:               # If the root is the actual root of the entire tree we 
-            pivot = root                    # Change so root point to the new root.
+            self.root = pivot               # Change so root point to the new root.
 
         pivot.parent = root.parent
         root.parent = pivot
@@ -164,7 +164,7 @@ class BinaryTree:
         pivot.right = root
 
         if root == self.root:               # If the root is the actual root of the entire tree we 
-            pivot = root                    # Change so root point to the new root.
+            self.root = pivot               # Change so root point to the new root.
 
         pivot.parent = root.parent
         root.parent = pivot
