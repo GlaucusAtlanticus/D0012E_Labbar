@@ -73,6 +73,7 @@ class BinaryTree:
 
             if node.left.size > temp:
                 print("please rearrange")
+                self.rotate(node.left)
             else:
                 print("balance as all thing souled be")
 
@@ -80,6 +81,7 @@ class BinaryTree:
 
             if node.right.size > temp:
                 print("please rearrange")
+                self.rotate(node.right)
             else:
                 print("Perfectly balanced as all things should be") 
 
@@ -147,13 +149,74 @@ class BinaryTree:
             node.parent.left = None
             return node
 
+    def rotate(self, node):
+        parent = node.parent
+        rightOfParent = False
+        problemRight = False
+
+        if node.value > parent.value:		#är vi på höger sida av parent
+            rightOfParent = True
+
+        if node.left != None and node.right != None:	#vi har 2 barn
+            if node.left.size < node.right.size:	# barnen ligger fel
+                problemRight = True
+        elif node.left == None:				
+            problemRight = True
+        else:
+            problemRight = False
+        #####
+        
+        print("Node size: ", node.value)
+        print("How big are you daddy?: ", parent.value)
+
+        print("RightOfParent; ", rightOfParent)
+        print("ProblemRight; ", problemRight)
+        #######
+        if rightOfParent and problemRight:
+            print("RightRight")
+            
+            self.leftRotation(parent, node)
+
+
+        elif rightOfParent and not problemRight:
+            print("RightLeft")
+            
+            leftChild = node.left
+            self.rightRotation(node, node.left)
+            parent.right = leftChild
+            self.leftRotation(parent, node)
+            
+        elif (not rightOfParent) and (not problemRight):
+            print("LeftLeft")
+            
+            self.rightRotation(parent, node)
+            
+        else:
+            print("LeftRight")
+            
+            rightChild = node.right
+            self.leftRotation(node, node.right)
+            parent.left = rightChild
+            self.rightRotation(parent, node)
+        print("Mamma")
+        self.display()
+
+        
+ 
     # Rotates 2 nodes in tree to the left
     def leftRotation(self, root, pivot):
         root.right = pivot.left             # Switcher the pivots left subtree
         pivot.left = root
 
+
         if root == self.root:               # If the root is the actual root of the entire tree we 
             self.root = pivot               # Change so root point to the new root.
+
+        if root.parent.value > root.value:  #child on rightside
+            root.parent.left = pivot
+        else :                              #child on lefttside
+            root.parent.right = pivot
+
 
         pivot.parent = root.parent
         root.parent = pivot
@@ -173,10 +236,13 @@ def Main():
     tree = BinaryTree(10)
 
     tree.insert(tree.root, 5)
+    tree.display()
 
     tree.insert(tree.root, 15)
+    tree.display()
 
     tree.insert(tree.root, 20)
+    tree.display()
 
     tree.insert(tree.root, 25)
     tree.display()
