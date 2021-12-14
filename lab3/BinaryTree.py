@@ -30,12 +30,12 @@ class BinaryTree:
             else:
                 return self.search(node.right, value)
     
-    # Gives a text output to if the value is in the tree
+    # Gives a text output if the value is in the tree
     # Does not need root as argument
     def isValueInTree(self, value):
         answer = self.search(self.root, value)
 
-        if answer != False:
+        if answer != False:                             
             print("Value is in the Tree!")
         else:
             print("Value is not in the Tree =(")
@@ -147,24 +147,24 @@ class BinaryTree:
             node.parent.left = None
             return node
 
-    # Rotates certain nodes in tree to the left
+    # Rotates 2 nodes in tree to the left
     def leftRotation(self, root, pivot):
-        root.left = pivot.right
-        pivot.right = root
+        root.right = pivot.left
+        pivot.left = root
 
-        if root == self.root:
-            pivot = root
+        if root == self.root:               # If the root is the actual root of the entire tree we 
+            pivot = root                    # Change so root point to the new root.
 
         pivot.parent = root.parent
         root.parent = pivot
 
-    # Rotates certain nodes in tree to the right
+    # Rotates 2 nodes in tree to the right
     def rightRotation(self, root, pivot):
-        root.right = pivot.left
-        pivot.left = root
+        root.left = pivot.right             
+        pivot.right = root
 
-        if root == self.root:
-            pivot = root
+        if root == self.root:               # If the root is the actual root of the entire tree we 
+            pivot = root                    # Change so root point to the new root.
 
         pivot.parent = root.parent
         root.parent = pivot
