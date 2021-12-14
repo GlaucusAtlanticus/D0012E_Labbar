@@ -11,35 +11,34 @@ import math
 # Class for creating and handling a Binary Tree
 class BinaryTree:
     def __init__(self, value, c = 0.5):
-        self.root = Node(value, None)                     # Sets the value of the first node when creating the Tree
+        self.root = Node(value, None)               # Sets the value of the first node when creating the Tree
         self.constraint = c
 
     # Checks if a given value exists in the tree
     # Because of the implementation we must always give root as argument
     def search(self, node, value):
-        if value == node.value:                     # Checks if value is in current node
+        if value == node.value:                         # Checks if value is in current node
             return node
         elif value < node.value:                    
-            if node.left == None:                   # If element is smaller but a smaller does not exists
-                return False
+            if node.left == None:                       # If element is smaller but a smaller does not exists
+                return False                            # Return false as the value therefore does not exist
             else:
-                return self.search(node.left, value)
+                return self.search(node.left, value)    # Checks the next smaller node
         else:
-            if node.right == None:                  # If element is larger but a larger does not exists
-                return False
+            if node.right == None:                      # If element is larger but a larger does not exists
+                return False                            # Return false as the value therefore does not exist
             else:
-                return self.search(node.right, value)
+                return self.search(node.right, value)   # Checks the next larger node
     
     # Gives a text output if the value is in the tree
     # Does not need root as argument
     def isValueInTree(self, value):
-        answer = self.search(self.root, value)
+        answer = self.search(self.root, value)          # Perform search function
 
-        if answer != False:                             
+        if answer != False:                             # Value exists
             print("Value is in the Tree!")
-        else:
+        else:                                           # Value does not exist
             print("Value is not in the Tree =(")
-
         return
 
 
@@ -66,58 +65,58 @@ class BinaryTree:
 
     # Updates the sum value of each node and checks if it breaks constraint
     def checkConstraint(self, node):
-        node.updateSize()
-        temp = self.constraint * (node.size)
+        node.updateSize()                       # Updates the size
+        max = self.constraint * (node.size)     # Calculates constraint * subtree size
         
-        if node.left != None:
+        if node.left != None:                   # If a subtree to the left exists
 
-            if node.left.size > temp:
-                print("please rearrange")
+            if node.left.size > max:            # Rearrange if left subtree is larger than max allowed value
+                print("Rearrange")
             else:
-                print("balance as all thing souled be")
+                print("Balance")
 
-        if node.right != None:
+        if node.right != None:                  # If a subtree to the right exists
 
-            if node.right.size > temp:
-                print("please rearrange")
+            if node.right.size > max:           # Rearrange if right subtree is larger than max allowed value
+                print("Rearrange")
             else:
-                print("Perfectly balanced as all things should be") 
+                print("Balance") 
 
 
     # Insert a node with a given value into a tree
     def insert(self, node, value):
-        if value == node.value:                     # Checks if value is in current node
-            return False
+        if value == node.value:                         # Checks if value is in current node
+            return False                                # Cannot perform insertion as value exists                   
         elif value < node.value:                    
-            if node.left == None:                   # If element is smaller but a smaller does not exists
-                node.left = Node(value, node)
+            if node.left == None:                       # If element is smaller but a smaller does not exists
+                node.left = Node(value, node)           # Create new node with the value
                 
-                print("inserted: ", value)
-                self.checkConstraint(node)
+                self.checkConstraint(node)              # Updates size and checks constraint after new node is added
                 return True
             else:
-                temp = self.insert(node.left, value)
-                self.checkConstraint(node)
-                return temp
+                trueFalse = self.insert(node.left, value)   # Checks right node and saves boolean if the operation was sucessfull or not
+                self.checkConstraint(node)                  # Updates size and checks constraint as tree might have been modified
+                return trueFalse
         else:
-            if node.right == None:                  # If element is larger but a larger does not exists
-                node.right = Node(value, node)
-                print("inserted: ", value)
-                self.checkConstraint(node)
+            if node.right == None:                      # If element is larger but a larger does not exists
+                node.right = Node(value, node)          # Create new node with the value
+
+                self.checkConstraint(node)              # Updates size and checks constraint after new node is added
                 return True
             else:
-                temp = self.insert(node.right, value)
-                self.checkConstraint(node)
-                return temp
+                trueFalse = self.insert(node.right, value)  # Checks right node and saves boolean if the operation was sucessfull or not
+                self.checkConstraint(node)                  # Updates size and checks constraint as tree might have been modified
+                return trueFalse
 
+    # Made mostly for fun
     # Deletes a node from the tree
     def delete(self, value):
-        node = self.search(self.root, value)
-        if node == False:
-            print("Kunde inte radera värdet det existerar ej")
+        node = self.search(self.root, value)                # Performs search function to find value
+        if node == False:                                   # If value does not exist
+            print("Value does not exists in Tree")
             return 
 
-        parent = node.parent
+        parent = node.parent                                # Saves the node that is to be deleteds pointers
         left = node.left
         right = node.right
 
@@ -137,37 +136,38 @@ class BinaryTree:
             else:
                 parent.right = leaf
 
+    # This is used ONLY for delete and was made for fun
     # Finds the leftmost node copies it and delets it
     def searchAndCut(self, node):
-        if node.left != None:
-            leaf = self.searchAndCut(node.left)
-            node.updateSize()
+        if node.left != None:                       # Checks if a node exists to the left
+            leaf = self.searchAndCut(node.left)     # Finds the leftmost node, copies it and deletes it
+            node.updateSize()                       # Updates the size as now a node is removed
             return leaf
         else:
-            node.parent.left = None
-            return node
+            node.parent.left = None                 # Delete the connection between the parent and leaf
+            return node                             # Return leaf
 
     # Rotates 2 nodes in tree to the left
     def leftRotation(self, root, pivot):
-        root.right = pivot.left             # Switcher the pivots left subtree
-        pivot.left = root
+        root.right = pivot.left             # Switcher the pivots left subtree to the roots right subtree
+        pivot.left = root                   # Puts root as the pivots left subtree
 
         if root == self.root:               # If the root is the actual root of the entire tree we 
             self.root = pivot               # Change so root point to the new root.
 
-        pivot.parent = root.parent
-        root.parent = pivot
+        pivot.parent = root.parent          # Makes pivots new parent the parent of root
+        root.parent = pivot                 # Makes pivot the parent of root
 
     # Rotates 2 nodes in tree to the right
     def rightRotation(self, root, pivot):
-        root.left = pivot.right             
-        pivot.right = root
+        root.left = pivot.right             # Switcher the pivots right subtree to the roots left subtree 
+        pivot.right = root                  # Puts root as the pivots right subtree
 
         if root == self.root:               # If the root is the actual root of the entire tree we 
             self.root = pivot               # Change so root point to the new root.
 
-        pivot.parent = root.parent
-        root.parent = pivot
+        pivot.parent = root.parent          # Makes pivots new parent the parent of root
+        root.parent = pivot                 # Makes pivot the parent of root
 
 def Main():
     tree = BinaryTree(10)
