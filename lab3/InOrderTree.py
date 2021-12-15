@@ -7,7 +7,7 @@
 
 
 # Class for creating a node and it's value
-from typing import List, Literal
+#from typing import List, Literal
 
 
 class Node:
@@ -179,11 +179,18 @@ class BinaryTree:
          #   self.root = newNode                         #   Update main tree root
 
         return newNode
+    
+    #https://www.py4u.net/discuss/21639
+    def printTree(self, node, level=0):  
+        if node != None:
+            self.printTree(node.left, level + 1)
+            print(' ' * 4 * level + '->', node.value)
+            self.printTree(node.right, level + 1)
 
 def Main():
 
     input = 1
-    K = 8
+    K = 9
     tree = BinaryTree(input)
 
     while input < K:
@@ -191,6 +198,6 @@ def Main():
         print(input, " inserted")
         input += 1
     print("display:")
-    #tree.display()
+    tree.printTree(tree.root)
 
 Main()
