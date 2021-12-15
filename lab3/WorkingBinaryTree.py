@@ -74,6 +74,7 @@ class BinaryTree:
                 self.checkConstraint(node.left)
                 self.checkConstraint(node.right)
                 self.rotate(node.left)
+                
             else:
                 print("Balance")
 
@@ -84,6 +85,7 @@ class BinaryTree:
                 self.checkConstraint(node.left)
                 self.checkConstraint(node.right)
                 self.rotate(node.right)
+                
             else:
                 print("Balance") 
 
@@ -243,6 +245,79 @@ class BinaryTree:
         parent.updateSize()
         pivot.updateSize()
 
+        def funkyRotation(self, root):
+            rightNode = findClosestToMiddle(root.right)
+            leftNode = findClosestToMiddle(root.left)
+            
+            if abs(root.left.size - root.right.size) == 2:
+                if root.left.left.value > root.left.right.value and root.right.right.value > root.right.left.value:
+                    if root.right.value < root.left.value:
+
+                        #HANTERA RIGHTNODES FARSA
+                        if rightNode.value < rightNode.parent.value:
+                            rightNode.parent.left = None
+                        else:
+                            rightNode.parent.right = None
+                        
+                        rightNode.parent = root.parent
+                        rightNode.left = root.left
+                        rightNode.right = root.right
+
+
+                        # HANTERA ROOTS FARSA
+                        if rightNode.parent == None:         # if grand parent is None that means parent was previous tree root
+                            self.root = rightNode
+                        else:                           # if it was not update grandparents child
+                            if rightNode.parent.value < rightNode.value:
+                                rightNode.parent.right = rightNode
+                            else:
+                                rightNode.parent.left = rightNode
+
+                        self.insert(leftNode, root.value)
+
+                    else:
+                        if leftNode.value < leftNode.parent.value:
+                            leftNode.parent.left = None
+                        else:
+                            leftNode.parent.right = None
+                        
+                        leftNode.parent = root.parent
+                        leftNode.left = root.left
+                        leftNode.right = root.right
+
+                        # HANTERA ROOTS FARSA
+                        if leftNode.parent == None:         # if grand parent is None that means parent was previous tree root
+                            self.root = leftNode
+                        else:                           # if it was not update grandparents child
+                            if leftNode.parent.value < leftNode.value:
+                                leftNode.parent.right = leftNode
+                            else:
+                                leftNode.parent.left = leftNode
+
+                        self.insert(rightNode, root.value)
+
+
+                        
+
+        def findClosestToMiddle(self, node):
+            if node.value < node.parent.value: #find largest element since node is in left subtree
+                if node.right == None:                      # If element is larger but a larger does not exists
+                    return node                            # Return the node since its the largest
+                else:
+                    return self.findClosestToMiddle(node.right)   # Checks the next larger node
+            
+            else:                              #find smallest element since node is in right subtree
+                if node.left == None:
+                    return node
+                else:
+                    return self.findClosestToMiddle(node.left)
+
+
+        
+        
+
+
+
 def Main():
     """ tree = BinaryTree(10)
 
@@ -263,7 +338,7 @@ def Main():
     tree.display() """
 
     input = 1
-    K = 6
+    K = 12
     tree = BinaryTree(input)
 
     while input < K:
