@@ -93,7 +93,7 @@ class BinaryTree:
     def insert(self, value, node = None):
         if node == None:
             node = self.root
-        
+
         if value == node.value:                         # Checks if value is in current node
             return False                                # Cannot perform insertion as value exists                   
         elif value < node.value:                    
@@ -172,6 +172,12 @@ class BinaryTree:
             rightLargerThenLeft = False
 
         # determens the case
+        if node.left != None and node.right != None:
+            if abs(node.left.size - node.right.size) == 2:
+                if node.left.left != None and node.left.right != None and node.right.right != None and node.right.left != None:
+                    if node.left.left.value > node.left.right.value and node.right.right.value > node.right.left.value:
+                        self.funkyRotation(node)
+
         if parent.value < node.value:
             if rightLargerThenLeft:
                 # right right
@@ -251,56 +257,53 @@ class BinaryTree:
         def funkyRotation(self, root):
             rightNode = findClosestToMiddle(root.right)
             leftNode = findClosestToMiddle(root.left)
+            #if abs(root.left.size - root.right.size) == 2:
+                #if root.left.left.value > root.left.right.value and root.right.right.value > root.right.left.value:
             
-            if abs(root.left.size - root.right.size) == 2:
-                if root.left.left.value > root.left.right.value and root.right.right.value > root.right.left.value:
-                    if root.right.value < root.left.value:
+            if root.right.value < root.left.value:
 
-                        #HANTERA RIGHTNODES FARSA
-                        if rightNode.value < rightNode.parent.value:
-                            rightNode.parent.left = None
-                        else:
-                            rightNode.parent.right = None
-                        
-                        rightNode.parent = root.parent
-                        rightNode.left = root.left
-                        rightNode.right = root.right
+                #HANTERA RIGHTNODES FARSA
+                if rightNode.value < rightNode.parent.value:
+                    rightNode.parent.left = None
+                else:
+                    rightNode.parent.right = None
+                
+                rightNode.parent = root.parent
+                rightNode.left = root.left
+                rightNode.right = root.right
 
 
-                        # HANTERA ROOTS FARSA
-                        if rightNode.parent == None:         # if grand parent is None that means parent was previous tree root
-                            self.root = rightNode
-                        else:                           # if it was not update grandparents child
-                            if rightNode.parent.value < rightNode.value:
-                                rightNode.parent.right = rightNode
-                            else:
-                                rightNode.parent.left = rightNode
-
-                        self.insert(root.value, leftNode)
-
+                # HANTERA ROOTS FARSA
+                if rightNode.parent == None:         # if grand parent is None that means parent was previous tree root
+                    self.root = rightNode
+                else:                           # if it was not update grandparents child
+                    if rightNode.parent.value < rightNode.value:
+                        rightNode.parent.right = rightNode
                     else:
-                        if leftNode.value < leftNode.parent.value:
-                            leftNode.parent.left = None
-                        else:
-                            leftNode.parent.right = None
-                        
-                        leftNode.parent = root.parent
-                        leftNode.left = root.left
-                        leftNode.right = root.right
+                        rightNode.parent.left = rightNode
 
-                        # HANTERA ROOTS FARSA
-                        if leftNode.parent == None:         # if grand parent is None that means parent was previous tree root
-                            self.root = leftNode
-                        else:                           # if it was not update grandparents child
-                            if leftNode.parent.value < leftNode.value:
-                                leftNode.parent.right = leftNode
-                            else:
-                                leftNode.parent.left = leftNode
+                self.insert(root.value, leftNode)
 
-                        self.insert(root.value, rightNode)
+            else:
+                if leftNode.value < leftNode.parent.value:
+                    leftNode.parent.left = None
+                else:
+                    leftNode.parent.right = None
+                
+                leftNode.parent = root.parent
+                leftNode.left = root.left
+                leftNode.right = root.right
 
+                # HANTERA ROOTS FARSA
+                if leftNode.parent == None:         # if grand parent is None that means parent was previous tree root
+                    self.root = leftNode
+                else:                           # if it was not update grandparents child
+                    if leftNode.parent.value < leftNode.value:
+                        leftNode.parent.right = leftNode
+                    else:
+                        leftNode.parent.left = leftNode
 
-                        
+                self.insert(root.value, rightNode)
 
         def findClosestToMiddle(self, node):
             if node.value < node.parent.value: #find largest element since node is in left subtree
@@ -324,7 +327,7 @@ class BinaryTree:
 def Main():
 
     input = 1
-    K = 12
+    K = 14
     tree = BinaryTree(input)
 
     while input < K:
