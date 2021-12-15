@@ -176,7 +176,7 @@ class BinaryTree:
         # using node.parent since the node points to the pivot and here the root is the relevant part
         specialNode = node.parent
         if specialNode.left != None and specialNode.right != None:
-            if abs(specialNode.left.size - specialNode.right.size) == 2:
+            if abs(specialNode.left.size - specialNode.right.size) >= 2:
                 if specialNode.left.left != None and specialNode.left.right != None and specialNode.right.right != None and specialNode.right.left != None:
                     if specialNode.left.left.value > specialNode.left.right.value and specialNode.right.right.value > specialNode.right.left.value:
                         self.funkyRotation(specialNode)
@@ -266,17 +266,10 @@ class BinaryTree:
             if root.right.value < root.left.value:
 
                 #HANTERA RIGHTNODES FARSA
-                rightNode.parent.left = rightNode.right
-                #if rightNode.value < rightNode.parent.value:
-                #    rightNode.parent.left = #None rightNode.right
-                #else:
-                #    rightNode.parent.right = None
-
-
-                #hantera rightnodes barn
-
-
-                
+                if rightNode.value < rightNode.parent.value:
+                    rightNode.parent.left = None
+                else:
+                    rightNode.parent.right = None
                 
                 rightNode.parent = root.parent
                 rightNode.left = root.left
@@ -295,12 +288,10 @@ class BinaryTree:
                 self.insert(root.value, leftNode)
 
             else:
-                #HANTERA LEFTNODES FARSA
-                rightNode.parent.right = rightNode.left
-                #if leftNode.value < leftNode.parent.value:
-                #    leftNode.parent.left = None
-                #else:
-                #    leftNode.parent.right = None
+                if leftNode.value < leftNode.parent.value:
+                    leftNode.parent.left = None
+                else:
+                    leftNode.parent.right = None
                 
                 leftNode.parent = root.parent
                 leftNode.left = root.left
@@ -339,7 +330,7 @@ class BinaryTree:
 def Main():
 
     input = 1
-    K = 8
+    K = 12
     tree = BinaryTree(input)
 
     while input < K:
