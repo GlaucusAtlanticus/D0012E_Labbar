@@ -72,6 +72,7 @@ class BinaryTree:
 
             if node.left.size > max:
                 print("please rearrange")
+                
                 self.rotate(node.left)
             else:
                 print("Balance")

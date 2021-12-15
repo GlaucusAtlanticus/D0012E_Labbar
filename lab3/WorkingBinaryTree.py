@@ -62,6 +62,8 @@ class BinaryTree:
 
     # Updates the sum value of each node and checks if it breaks constraint
     def checkConstraint(self, node):
+        if node == None:
+            return True
         node.updateSize()                       # Updates the size
         max = self.constraint * (node.size)     # Calculates constraint * subtree size
         
@@ -69,6 +71,8 @@ class BinaryTree:
 
             if node.left.size > max:
                 print("please rearrange")
+                self.checkConstraint(node.left)
+                self.checkConstraint(node.right)
                 self.rotate(node.left)
             else:
                 print("Balance")
@@ -77,6 +81,8 @@ class BinaryTree:
 
             if node.right.size > max:
                 print("please rearrange")
+                self.checkConstraint(node.left)
+                self.checkConstraint(node.right)
                 self.rotate(node.right)
             else:
                 print("Balance") 
@@ -238,7 +244,7 @@ class BinaryTree:
         pivot.updateSize()
 
 def Main():
-    tree = BinaryTree(10)
+    """ tree = BinaryTree(10)
 
     tree.insert(tree.root, 5)
     print("New display")
@@ -254,6 +260,17 @@ def Main():
 
     tree.insert(tree.root, 25)
     print("New display")
+    tree.display() """
+
+    input = 1
+    K = 6
+    tree = BinaryTree(input)
+
+    while input < K:
+        tree.insert(tree.root, input)
+        print(input, " inserted")
+        input += 1
+    print("display:")
     tree.display()
 
 Main()
