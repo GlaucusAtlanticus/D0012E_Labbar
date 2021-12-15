@@ -84,6 +84,7 @@ class BinaryTree:
         if node.value < value:                              # IF TRUE: walk right
             if node.right == None:                              # can not walk right
                 node.right = Node(value, node)                  # create new node whit value
+                self.check(node)                                # check condition
                 return True                                     
             else:
                 success = self.insertNode(value, node.right)    # recursive call to the right
@@ -92,6 +93,7 @@ class BinaryTree:
         else:                                               # ELSE: walk left
             if node.left == None:                               # can not walk left
                 node.left = Node(value, node)                   # create new node whit value
+                self.check(node)                                # check condition
                 return True                                     
             else:                                           
                 success = self.insertNode(value, node.left)     # recursive call to the left 
@@ -110,7 +112,9 @@ class BinaryTree:
                 i = 1
             return newTree.root                         # Returns new trees root
         
-        middle = round(len(lst)/ 2)                     # divide the list in to 
+        middle = round(len(lst)// 2)                     # divide the list in to 
+        #if len(lst)%2 != 0:
+        #    middle = middle - 1
         node = Node(lst[middle], None)                        # create node of the middle element
 
         leftNode = self.listToTree(lst[:middle])        # recursive call whit the left part of the list
@@ -121,6 +125,8 @@ class BinaryTree:
 
         node.right = rightNode                          # sets the right child
         rightNode.parent = node                         # updates right child's parent
+
+        node.updateSize()
 
         return node                                     # return new tree root
 
@@ -171,6 +177,8 @@ class BinaryTree:
     # reorders a sub tree
     # returns sub trees root
     def rearrange(self, node) -> Node:
+
+        print("re")
         
         lst = self.InOrderWalk(node)                    # In order walk
         newNode = self.listToTree(lst)                  # Turns a list into a tree
@@ -190,14 +198,14 @@ class BinaryTree:
 def Main():
 
     input = 1
-    K = 9
+    K = 20
     tree = BinaryTree(input)
 
     while input < K:
         tree.insertNode(input)
         print(input, " inserted")
         input += 1
-    print("display:")
-    tree.printTree(tree.root)
+        print("display:")
+        tree.printTree(tree.root)
 
 Main()
