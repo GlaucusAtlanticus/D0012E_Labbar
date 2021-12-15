@@ -90,7 +90,10 @@ class BinaryTree:
                 print("Balance") 
 
     # Insert a node with a given value into a tree
-    def insert(self, node, value):
+    def insert(self, value, node = None):
+        if node == None:
+            node = self.root
+        
         if value == node.value:                         # Checks if value is in current node
             return False                                # Cannot perform insertion as value exists                   
         elif value < node.value:                    
@@ -100,7 +103,7 @@ class BinaryTree:
                 self.checkConstraint(node)              # Updates size and checks constraint after new node is added
                 return True
             else:
-                trueFalse = self.insert(node.left, value)   # Checks right node and saves boolean if the operation was sucessfull or not
+                trueFalse = self.insert(value, node.left)   # Checks right node and saves boolean if the operation was sucessfull or not
                 self.checkConstraint(node)                  # Updates size and checks constraint as tree might have been modified
                 return trueFalse
         else:
@@ -110,7 +113,7 @@ class BinaryTree:
                 self.checkConstraint(node)              # Updates size and checks constraint after new node is added
                 return True
             else:
-                trueFalse = self.insert(node.right, value)  # Checks right node and saves boolean if the operation was sucessfull or not
+                trueFalse = self.insert(value, node.right)  # Checks right node and saves boolean if the operation was sucessfull or not
                 self.checkConstraint(node)                  # Updates size and checks constraint as tree might have been modified
                 return trueFalse
 
@@ -273,7 +276,7 @@ class BinaryTree:
                             else:
                                 rightNode.parent.left = rightNode
 
-                        self.insert(leftNode, root.value)
+                        self.insert(root.value, leftNode)
 
                     else:
                         if leftNode.value < leftNode.parent.value:
@@ -294,7 +297,7 @@ class BinaryTree:
                             else:
                                 leftNode.parent.left = leftNode
 
-                        self.insert(rightNode, root.value)
+                        self.insert(root.value, rightNode)
 
 
                         
@@ -319,30 +322,13 @@ class BinaryTree:
 
 
 def Main():
-    """ tree = BinaryTree(10)
-
-    tree.insert(tree.root, 5)
-    print("New display")
-    tree.display()
-
-    tree.insert(tree.root, 15)
-    print("New display")
-    tree.display()
-
-    tree.insert(tree.root, 20)
-    print("New display")
-    tree.display()
-
-    tree.insert(tree.root, 25)
-    print("New display")
-    tree.display() """
 
     input = 1
     K = 12
     tree = BinaryTree(input)
 
     while input < K:
-        tree.insert(tree.root, input)
+        tree.insert(input)
         print(input, " inserted")
         input += 1
     print("display:")
